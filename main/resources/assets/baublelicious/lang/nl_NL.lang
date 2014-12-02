@@ -1,0 +1,18 @@
+
+itemGroup.Baublelicious=Baublelicious
+
+# items
+item.ItemRing.name=Ring
+item.ItemBelt.name=Riem
+item.ItemAmulet.name=Amulet
+
+item.ItemBeltStepAssist.name=Riem Van Het Wandelen
+item.ItemBeltWaterWalking.name=Riem Van Water Loopen
+item.ItemNecklesDiving.name=Amulet Van Duiken
+item.ItemFlyingRing.name=Ring Van Het Vliegen
+item.ItemStrengthRing.name=Ring Van Kracht
+item.ItemSpeedBelt.name=Snelheids Riem
+item.ItemMagnetRing.name=Magneet Ring
+item.ItemFallingBelt.name=Vallen Ring
+item.ItemAmuletGrowth.name=Amulet Van De Groei
+item.ItemRFRing.name=Redstone Flux Ring
