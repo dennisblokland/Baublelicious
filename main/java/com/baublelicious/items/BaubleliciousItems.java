@@ -1,5 +1,6 @@
 package com.baublelicious.items;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 
 
@@ -35,10 +36,10 @@ ItemSpeedBelt = new ItemSpeedBelt();
 ItemFallingBelt = new ItemFallingBelt();
 ItemMagnetRing = new ItemMagnetRing();
 ItemAmuletGrowth = new ItemAmuletGrowth();
-//ItemMagicCore = new ItemMagicCore();
+ItemMagicCore = new ItemMagicCore();
 
 
-//GameRegistry.registerItem(ItemMagicCore, "ItemMagicCore");
+GameRegistry.registerItem(ItemMagicCore, "ItemMagicCore");
 
 
 
