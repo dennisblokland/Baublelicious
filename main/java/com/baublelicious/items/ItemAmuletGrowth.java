@@ -60,14 +60,20 @@ public class ItemAmuletGrowth extends ItemBaubles {
 	    }
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase entity) {
-		
-		  {
+		  World par2World = entity.worldObj;
+		     if (!(entity instanceof EntityPlayer) || par2World.isRemote)
+		        {
+		            return;
+		        }
+
+		    
+		        
 			  EntityPlayer player = (EntityPlayer) entity;
 				ItemStack belt = PlayerHandler.getPlayerBaubles(player).getStackInSlot(0);
 				InventoryBaubles baubles = PlayerHandler.getPlayerBaubles(player);
 		
 			Item item = stack.getItem();
-			  World par2World = entity.worldObj;
+			
 		        if (!(entity instanceof EntityPlayer))
 		        {
 		            return;
@@ -102,12 +108,13 @@ public class ItemAmuletGrowth extends ItemBaubles {
 		                        	
 		                            if (par2World.rand.nextInt(20) == 0)
 		                            {
+		                            	
 
 		                                block.updateTick(par2World, ix, iy, iz, par2World.rand);
-		                                
+		                     	        }
 		                             if(belt != null && belt.getItem() == this)
 		                                if (par2World.rand.nextInt(80) == 0){
-
+		                           		 
                                 			stack.damageItem(1, par3EntityPlayer);
 		                                	if (stack.getItemDamage() == 1001)
 		                                		
@@ -124,19 +131,23 @@ public class ItemAmuletGrowth extends ItemBaubles {
 		                    }
 		                }
 		            }
-		        }
+		        
 
 		        return;
+
+}
 		     
-		    }
-	
+
+
+		  
 	
 
 
    
  
     
-}
+
+
 
 		 
 	
@@ -174,4 +185,3 @@ public class ItemAmuletGrowth extends ItemBaubles {
 	        return par1ItemStack;
 	    }
 }
-
