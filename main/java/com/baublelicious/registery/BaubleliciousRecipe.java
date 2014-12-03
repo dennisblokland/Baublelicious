@@ -1,9 +1,6 @@
 package com.baublelicious.registery;
 
-import thaumcraft.common.items.baubles.ItemRingRunic;
-
 import com.baublelicious.items.BaubleliciousItems;
-
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;

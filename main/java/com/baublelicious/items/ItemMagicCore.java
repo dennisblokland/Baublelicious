@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -58,9 +59,16 @@ public class ItemMagicCore extends Item {
 	return icons[par1];
 	}
 
+	 @Override
+	    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
+	    {
+		 par3List.add(en_USNames[par1ItemStack.getItemDamage()]);
+		}
 
+	        
+	    }
 
 	
-}
+
 
 
