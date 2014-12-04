@@ -7,7 +7,7 @@ Requires baubles 1.0.1.4 or later
 
 links
 =====
-[Curse Page](http://www.curse.com/mc-mods/minecraft/223951-baublelicious)
+[Curse Forge Page](http://minecraft.curseforge.com/mc-mods/223951-baublelicious)
 
 [Minecraft Forum Page](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/2204603-baubles-baublelicious)
 
