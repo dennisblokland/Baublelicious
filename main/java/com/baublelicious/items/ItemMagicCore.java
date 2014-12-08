@@ -62,7 +62,7 @@ public class ItemMagicCore extends Item {
 	 @Override
 	    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
 	    {
-		 par3List.add(en_USNames[par1ItemStack.getItemDamage()]);
+		 par3List.add(en_USNames[par1ItemStack.getItemDamage()].replaceAll("tier", "Tier "));
 		}
 
 	        
