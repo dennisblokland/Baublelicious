@@ -2,6 +2,11 @@ package com.baublelicious.items;
 
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
+
+import com.sun.corba.se.spi.orbutil.fsm.Input;
+
+import scala.swing.event.Key;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -137,25 +142,11 @@ public class ItemAmuletGrowth extends ItemBaubles {
 
 }
 		     
-
-
-		  
-	
-
-
-   
- 
-    
-
-
-
-		 
 	
 	 @Override
 	    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	    {
 	    
-
 		 if(par2World.isRemote)
 	        {
 	        	return par1ItemStack;
