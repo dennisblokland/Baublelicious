@@ -21,7 +21,7 @@ public class BaubleliciousItems {
 	public static Item ItemAmuletGrowth;
 	public static Item ItemPhantomAmulet;
 	public static Item ItemMagicCore;
-	public static Item ItemEnderAmulet;
+	public static Item ItemsAmuletNightvision;
 
 
 	
@@ -38,7 +38,8 @@ ItemFallingBelt = new ItemFallingBelt();
 ItemMagnetRing = new ItemMagnetRing();
 ItemAmuletGrowth = new ItemAmuletGrowth();
 ItemMagicCore = new ItemMagicCore();
-ItemEnderAmulet = new ItemEnderAmulet();
+ItemsAmuletNightvision = new ItemsAmuletNightvision();
+
 
 
 GameRegistry.registerItem(ItemMagicCore, "ItemMagicCore");
