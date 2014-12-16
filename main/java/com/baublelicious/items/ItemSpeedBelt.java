@@ -44,10 +44,6 @@ public class ItemSpeedBelt extends ItemBaubles {
 			EntityPlayer player = (EntityPlayer) entity;
 			if((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F && !player.isInsideOfMaterial(Material.water))
 				player.moveFlying(0F, 1F, player.capabilities.isFlying ? speed : speed * 2);
-
-			
-				player.stepHeight = 0.50001F; // Not 0.5F because that is the default
-			 if(player.stepHeight == 0.50001F)
 				player.stepHeight = 1F;
 		}
 	}
