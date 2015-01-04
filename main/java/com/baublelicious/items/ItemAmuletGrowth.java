@@ -93,7 +93,7 @@ public class ItemAmuletGrowth extends ItemBaubles {
 		        {
 		        	  if (stack.stackTagCompound.getBoolean("isActive")){
 
-		            int range = 5;
+		            int range = 0;
 		            int verticalRange = 2;
 		            int posX = (int) Math.round(entity.posX - 0.5f);
 		            int posY = (int) entity.posY;
