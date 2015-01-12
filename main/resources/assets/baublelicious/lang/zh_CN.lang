@@ -1,0 +1,17 @@
+itemGroup.Baublelicious=Baublelicious
+
+# items
+item.ItemRing.name=指环
+item.ItemBelt.name=腰带
+item.ItemAmulet.name=护身符
+
+item.ItemBeltStepAssist.name=远足腰带
+item.ItemBeltWaterWalking.name=水行腰带
+item.ItemNecklesDiving.name=潜水护身符
+item.ItemFlyingRing.name=飞行指环
+item.ItemStrengthRing.name=力量指环
+item.ItemSpeedBelt.name=加速腰带
+item.ItemMagnetRing.name=磁吸腰带
+item.ItemFallingBelt.name=陨落腰带
+item.ItemAmuletGrowth.name=丰收护身符
+item.ItemRFRing.name=RF充能指环
