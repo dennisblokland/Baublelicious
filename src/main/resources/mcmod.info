@@ -1,0 +1,16 @@
+[
+{
+  "modid": "baublelicious",
+  "name": "Baublelicious",
+  "description": "Expension for baubles",
+  "version": "1.0.6",
+  "mcversion": "${version}",
+  "url": "http://www.curse.com/mc-mods/minecraft/223951-baublelicious",
+  "updateUrl": "",
+  "authorList": ["DenBukki"],
+  "credits": "Azanor: for making baubles",
+  "logoFile": "BLLogo.png",
+  "screenshots": [],
+  "dependencies": [baubles]
+}
+]
