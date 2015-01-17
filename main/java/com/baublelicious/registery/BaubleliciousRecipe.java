@@ -1,10 +1,13 @@
 package com.baublelicious.registery;
 
+import com.baublelicious.blocks.baubleliciousBlocks;
 import com.baublelicious.items.BaubleliciousItems;
+
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -14,7 +17,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 
 
-public abstract class BaubleliciousRecipe {
+public abstract class BaubleliciousRecipe { 
 	
 	 
 
@@ -38,13 +41,20 @@ public abstract class BaubleliciousRecipe {
         GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 1)," D ", "RGR"," D ", 'R', Items.redstone, 'G', Blocks.gold_block, 'D', Items.diamond);
         GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2)," G ", "RNR"," G ", 'R', Items.redstone, 'G', Items.gold_ingot, 'N', Items.nether_star);
 	
+        //blocks
+        
+       // GameRegistry.addRecipe(new ItemStack(baubleliciousBlocks.BlockPedestal)," G "," p "," Q ", 'g', Blocks.glass, 'Q', Blocks.quartz_block,'p', new ItemStack(Blocks.quartz_block),1,2);
+        GameRegistry.addRecipe(new ItemStack(baubleliciousBlocks.BlockPedestal), new Object[]{
+        	" G "," p ","QQQ", 'G', Blocks.glass, 'Q', new ItemStack(Blocks.quartz_block,1,0),'p', new ItemStack(Blocks.quartz_block,1,2)});
 	
-	}
 
 
 	
 		
-	}
+	
+	
+}
+}
 
 
 	

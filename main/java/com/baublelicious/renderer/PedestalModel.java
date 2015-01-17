@@ -94,8 +94,8 @@ public class PedestalModel extends ModelBase
     pillar3.render(f5);
     pillar4.render(f5);
     basetop.render(f5);
-    glass.render(f5);
     stand.render(f5);
+	glass.render(f5);
    
   }
   
