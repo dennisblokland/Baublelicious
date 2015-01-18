@@ -44,39 +44,37 @@ public class PedestalContainer extends Container {
                 }
         }
         @Override
-    	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-    		ItemStack stack = null;
-    		Slot slotObject = (Slot) inventorySlots.get(slot);
-
-    		//null checks and checks if the item can be stacked (maxStackSize > 1)
-    		if (slotObject != null && slotObject.getHasStack()) {
-    			ItemStack stackInSlot = slotObject.getStack();
-    			stack = stackInSlot.copy();
-
-    			//merges the item into player inventory since its in the tileEntity
-    			if (slot < 9) {
-    				if (!this.mergeItemStack(stackInSlot, 0, 35, true)) {
-    					return null;
-    				}
-    			}
-    			//places it into the tileEntity is possible since its in the player inventory
-    			else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
-    				return null;
-    			}
-
-    			if (stackInSlot.stackSize == 0) {
-    				slotObject.putStack(null);
-    			} else {
-    				slotObject.onSlotChanged();
-    			}
-
-    			if (stackInSlot.stackSize == stack.stackSize) {
-    				return null;
-    			}
-    			slotObject.onPickupFromSlot(player, stackInSlot);
-    		}
-    		return stack;
-    	}
+        public ItemStack transferStackInSlot(EntityPlayer p, int i)
+        {
+            ItemStack itemstack = null;
+            Slot slot = (Slot) inventorySlots.get(i);
+            if (slot != null && slot.getHasStack())
+            {
+                ItemStack itemstack1 = slot.getStack();
+                itemstack = itemstack1.copy();
+                if (i < 1)
+                {
+                    if (!mergeItemStack(itemstack1, 1, inventorySlots.size(), true))
+                    {
+                        return null;
+                    }
+                }
+              
+                else if (!mergeItemStack(itemstack1, 0, 1, false))
+                {
+                    return null;
+                }
+                if (itemstack1.stackSize == 0)
+                {
+                    slot.putStack(null);
+                }
+                else
+                {
+                    slot.onSlotChanged();
+                }
+            }
+            return itemstack;
+        }
 
     	@Override
     	protected boolean mergeItemStack(ItemStack itemstack, int i, int j, boolean flag) {
