@@ -5,8 +5,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-import org.lwjgl.opengl.GL11;
-
 import com.baublelicious.container.PedestalContainer;
 import com.baublelicious.entity.TileentityPedestal;
 

@@ -25,14 +25,14 @@ public class ItemFlyingRing  extends ItemBaubles implements IBauble
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase entity) {
 		EntityPlayer player = (EntityPlayer) entity;
 		
-		player.capabilities.isFlying = false;
-		player.capabilities.allowFlying = false;
+		//player.capabilities.isFlying = false;
+		//player.capabilities.allowFlying = false;
 
 	}
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase entity) {
-		EntityPlayer player = (EntityPlayer) entity;
-		player.capabilities.allowFlying = true;
+		//EntityPlayer player = (EntityPlayer) entity;
+		//player.capabilities.allowFlying = true;
 
 	}
 	
@@ -43,8 +43,8 @@ public class ItemFlyingRing  extends ItemBaubles implements IBauble
 	}
 	@Override
 	public void onEquippedOrLoadedIntoWorld(ItemStack stack, EntityLivingBase entity) {
-		EntityPlayer player = (EntityPlayer) entity;
-		player.capabilities.allowFlying = true;
+		//EntityPlayer player = (EntityPlayer) entity;
+		//player.capabilities.allowFlying = true;
 	}
 
 	}

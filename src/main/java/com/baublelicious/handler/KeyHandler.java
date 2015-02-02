@@ -1,23 +1,13 @@
 package com.baublelicious.handler;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.event.entity.living.LivingEvent;
-
 import org.lwjgl.input.Keyboard;
 
-import baubles.common.Baubles;
-
-import com.baublelicious.baublelicious;
 import com.baublelicious.items.BaubleliciousItems;
 
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 

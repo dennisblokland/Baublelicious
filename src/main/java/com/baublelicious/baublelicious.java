@@ -32,7 +32,8 @@ public class baublelicious
     
     public static CreativeTabs TabBaublelicious = new CreativeTabs("Baublelicious")
     {
-    public Item getTabIconItem()
+    @Override
+	public Item getTabIconItem()
     {
     return BaubleliciousItems.ItemNecklesDiving;
     }
@@ -41,7 +42,7 @@ public class baublelicious
     public static boolean isCoFHCoreLoaded;
 
 
-
+ 
     @EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
     	proxy.registerRenderThings();

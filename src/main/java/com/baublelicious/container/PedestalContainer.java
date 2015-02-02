@@ -17,9 +17,9 @@ public class PedestalContainer extends Container {
 
                 //the Slot constructor takes the IInventory and the slot number in that it binds to
                 //and the x-y coordinates it resides on-screen
-                addSlotToContainer(new SlotBaubles(tileEntity, 0, 80, 35));
+                addSlotToContainer(new SlotBaubles(tileEntity, 0, 80, 10));
                         
-                
+                addSlotToContainer(new SlotGem(tileEntity, 1, 80, 50));
 
                 //commonly used vanilla code that adds the player's inventory
                 bindPlayerInventory(inventoryPlayer);
@@ -44,37 +44,39 @@ public class PedestalContainer extends Container {
                 }
         }
         @Override
-        public ItemStack transferStackInSlot(EntityPlayer p, int i)
-        {
-            ItemStack itemstack = null;
-            Slot slot = (Slot) inventorySlots.get(i);
-            if (slot != null && slot.getHasStack())
-            {
-                ItemStack itemstack1 = slot.getStack();
-                itemstack = itemstack1.copy();
-                if (i < 1)
-                {
-                    if (!mergeItemStack(itemstack1, 1, inventorySlots.size(), true))
-                    {
-                        return null;
-                    }
-                }
-              
-                else if (!mergeItemStack(itemstack1, 0, 1, false))
-                {
-                    return null;
-                }
-                if (itemstack1.stackSize == 0)
-                {
-                    slot.putStack(null);
-                }
-                else
-                {
-                    slot.onSlotChanged();
-                }
-            }
-            return itemstack;
-        }
+    	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
+    		ItemStack stack = null;
+    		Slot slotObject = (Slot) inventorySlots.get(slot);
+
+    		//null checks and checks if the item can be stacked (maxStackSize > 1)
+    		if (slotObject != null && slotObject.getHasStack()) {
+    			ItemStack stackInSlot = slotObject.getStack();
+    			stack = stackInSlot.copy();
+
+    			//merges the item into player inventory since its in the tileEntity
+    			if (slot < 9) {
+    				if (!this.mergeItemStack(stackInSlot, 0, 35, true)) {
+    					return null;
+    				}
+    			}
+    			//places it into the tileEntity is possible since its in the player inventory
+    			else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
+    				return null;
+    			}
+
+    			if (stackInSlot.stackSize == 0) {
+    				slotObject.putStack(null);
+    			} else {
+    				slotObject.onSlotChanged();
+    			}
+
+    			if (stackInSlot.stackSize == stack.stackSize) {
+    				return null;
+    			}
+    			slotObject.onPickupFromSlot(player, stackInSlot);
+    		}
+    		return stack;
+    	}
 
     	@Override
     	protected boolean mergeItemStack(ItemStack itemstack, int i, int j, boolean flag) {

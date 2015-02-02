@@ -24,6 +24,7 @@ public class BaubleliciousItems {
 	public static Item ItemPhantomAmulet;
 	public static Item ItemMagicCore;
 	public static Item ItemsAmuletNightvision;
+	public static Item ItemBindingGem;
 
 
 	
@@ -31,6 +32,7 @@ public static void init() {
 ItemAmulet = new ItemAmulet();
 ItemRing = new ItemRing();
 ItemBelt = new ItemBelt();
+ItemBindingGem = new ItemBindingGem();
 ItemBeltStepAssist = new ItemBeltStepAssist();
 ItemBeltWaterWalking = new ItemBeltWaterWalking();
 ItemNecklesDiving = new ItemNecklesDiving();
@@ -45,8 +47,7 @@ ItemsAmuletNightvision = new ItemsAmuletNightvision();
 
 
 GameRegistry.registerItem(ItemMagicCore, "ItemMagicCore");
-
-
+//GameRegistry.registerItem(ItemBindingGem, "ItemBindingGem");
 
 
 

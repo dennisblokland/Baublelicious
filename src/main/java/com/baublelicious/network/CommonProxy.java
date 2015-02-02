@@ -8,7 +8,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
-		  System.out.print("network Initialized");
 	 	 BaubleliciousItems.init();
 	 	baubleliciousBlocks.init();
 	 	BaubleliciousRecipe.init();

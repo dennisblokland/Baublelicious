@@ -2,10 +2,6 @@ package com.baublelicious.items;
 
 import java.util.List;
 
-import org.lwjgl.input.Keyboard;
-
-
-import scala.swing.event.Key;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

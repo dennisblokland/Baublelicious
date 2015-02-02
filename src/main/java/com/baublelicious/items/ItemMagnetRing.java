@@ -28,6 +28,7 @@ public class ItemMagnetRing extends ItemBaubles{
 	public BaubleType getBaubleType(ItemStack arg0) {
 		return BaubleType.RING;
 	}
+	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase entity) { 
 		{
 			EntityPlayer player = (EntityPlayer)entity;

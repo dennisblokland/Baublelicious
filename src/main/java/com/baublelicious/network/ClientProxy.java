@@ -21,7 +21,8 @@ public class ClientProxy extends CommonProxy {
     }
 
     
-    public void registerRenderThings() {
+    @Override
+	public void registerRenderThings() {
         ClientRegistry.bindTileEntitySpecialRenderer(TileentityPedestal.class, new PedestalRenderer());
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(baubleliciousBlocks.BlockPedestal), new ItemRendererPedestalBlock());
 }

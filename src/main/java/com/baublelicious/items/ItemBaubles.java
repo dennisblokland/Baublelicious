@@ -55,6 +55,7 @@ public abstract class ItemBaubles extends ItemMod implements IBauble {
 	public boolean canUnequip(ItemStack stack, EntityLivingBase player) {
 		return true;
 	}
+	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		if(player.ticksExisted == 1)
 			onEquippedOrLoadedIntoWorld(stack, player);

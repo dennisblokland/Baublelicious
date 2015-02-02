@@ -18,6 +18,7 @@ public class ItemFallingBelt extends ItemBaubles{
 		
 		
 	}
+	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		EntityPlayer player1 = (EntityPlayer) player;
 		//if (player1)
