@@ -26,7 +26,7 @@ public class ItemBeltWaterWalking extends ItemBaubles implements IBauble {
     World world = player.worldObj;
     int x = MathHelper.floor_double(player.posX);
     int y = MathHelper.floor_double(player.boundingBox.minY - 0.11f);
-    int yPaddle = MathHelper.floor_double(player.boundingBox.minY + 0.05f);
+    int yPaddle = MathHelper.floor_double(player.boundingBox.minY);
     int z = MathHelper.floor_double(player.posZ);
     Material mWater = world.getBlock(x, y, z).getMaterial();
     Material mPaddle = world.getBlock(x, yPaddle, z).getMaterial();
