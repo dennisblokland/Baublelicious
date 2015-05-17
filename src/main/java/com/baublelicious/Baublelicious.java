@@ -27,7 +27,7 @@ public class Baublelicious {
   public static CreativeTabs TabBaublelicious = new CreativeTabs("Baublelicious") {
     @Override
     public Item getTabIconItem() {
-      return BaubleliciousItems.ItemNecklesDiving;
+      return BaubleliciousItems.ItemNecklaceDiving;
     }
   };
 

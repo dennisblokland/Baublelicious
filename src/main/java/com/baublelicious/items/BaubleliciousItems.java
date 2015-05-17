@@ -9,7 +9,7 @@ public class BaubleliciousItems {
   public static Baublelicious instance;
   public static Item ItemBeltStepAssist;
   public static Item ItemBeltWaterWalking;
-  public static Item ItemNecklesDiving;
+  public static Item ItemNecklaceDiving;
   public static Item ItemFlyingRing;
   public static Item ItemSpeedBelt;
   public static Item ItemBelt;
@@ -32,7 +32,7 @@ public class BaubleliciousItems {
     //ItemBindingGem = new ItemBindingGem();
     ItemBeltStepAssist = new ItemBeltStepAssist();
     ItemBeltWaterWalking = new ItemBeltWaterWalking();
-    ItemNecklesDiving = new ItemNecklesDiving();
+    ItemNecklaceDiving = new ItemNecklaceDiving();
     ItemFlyingRing = new ItemFlyingRing();
     ItemSpeedBelt = new ItemSpeedBelt();
     ItemFallingBelt = new ItemFallingBelt();
