@@ -25,7 +25,7 @@ public class PedestalBlock extends BlockContainer {
     setBlockName(key);
     setBlockTextureName(ModInfo.RESOURCE_LOCATION  + ":" + key);
     setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9444444F, 1.0F);
-    setCreativeTab(Baublelicious.TabBaublelicious);
+    setCreativeTab(Baublelicious.tabBaublelicious);
     setHardness(1.0F);
   }
 

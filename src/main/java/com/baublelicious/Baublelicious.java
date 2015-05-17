@@ -24,7 +24,7 @@ public class Baublelicious {
   @SidedProxy(clientSide = "com.baublelicious.network.ClientProxy", serverSide = "com.baublelicious.network.CommonProxy")
   public static CommonProxy proxy;
 
-  public static CreativeTabs TabBaublelicious = new CreativeTabs("Baublelicious") {
+  public static CreativeTabs tabBaublelicious = new CreativeTabs("Baublelicious") {
     @Override
     public Item getTabIconItem() {
       return BaubleliciousItems.ItemNecklaceDiving;

@@ -21,7 +21,7 @@ public class ItemMagicCore extends Item {
   public ItemMagicCore() {
     super();
     this.setHasSubtypes(true);
-    this.setCreativeTab(Baublelicious.TabBaublelicious);
+    this.setCreativeTab(Baublelicious.tabBaublelicious);
     this.setUnlocalizedName("ItemMagicCore");
   }
 

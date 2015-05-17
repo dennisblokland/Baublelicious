@@ -1,10 +1,10 @@
-
 itemGroup.Baublelicious=Baublelicious
 
 #ITEMS
 item.ItemRing.name=Ring
 item.ItemBelt.name=Belt
 item.ItemAmulet.name=Amulet
+item.baublelicious:bindingGem.name=Binding Gem
 
 item.ItemBeltStepAssist.name=Belt Of Hiking
 item.ItemBeltWaterWalking.name=Belt Of Water Walking
@@ -20,9 +20,6 @@ item.ItemMagicCore.tier1.name=Magic Core
 item.ItemMagicCore.tier2.name=Magic Core
 item.ItemMagicCore.tier3.name=Magic Core
 item.ItemsAmuletNightvision.name=Amulet Of Nightvision
-item.ItemBindingGem.name=Binding Gem
-
-
 
 #BLOCKS
 tile.BlockPedestal.name=Pedestal

@@ -14,13 +14,9 @@ public class PedestalContainer extends Container {
   public PedestalContainer(InventoryPlayer inventoryPlayer, TilePedestal te) {
     tileEntity = te;
 
-    //the Slot constructor takes the IInventory and the slot number in that it binds to
-    //and the x-y coordinates it resides on-screen
-    addSlotToContainer(new SlotBaubles(tileEntity, 0, 80, 10));
+    addSlotToContainer(new SlotValid(tileEntity, 0, 80, 10));
+    addSlotToContainer(new SlotValid(tileEntity, 1, 80, 50));
 
-    //                addSlotToContainer(new SlotGem(tileEntity, 1, 80, 50));
-
-    //commonly used vanilla code that adds the player's inventory
     bindPlayerInventory(inventoryPlayer);
   }
 

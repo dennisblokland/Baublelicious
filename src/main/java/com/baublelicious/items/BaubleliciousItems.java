@@ -1,11 +1,13 @@
 package com.baublelicious.items;
 
 import com.baublelicious.Baublelicious;
+import com.baublelicious.ModInfo;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 
-
 public class BaubleliciousItems {
+  public static final String BINDING_GEM_KEY = "bindingGem";
+
   public static Baublelicious instance;
   public static Item ItemBeltStepAssist;
   public static Item ItemBeltWaterWalking;
@@ -22,14 +24,13 @@ public class BaubleliciousItems {
   public static Item ItemPhantomAmulet;
   public static Item ItemMagicCore;
   public static Item ItemsAmuletNightvision;
-  public static Item ItemBindingGem;
-
+  public static Item bindingGem;
 
   public static void init() {
     ItemAmulet = new ItemAmulet();
     ItemRing = new ItemRing();
     ItemBelt = new ItemBelt();
-    //ItemBindingGem = new ItemBindingGem();
+    bindingGem = new ItemBindingGem(ModInfo.MOD_ID + ":" + BINDING_GEM_KEY);
     ItemBeltStepAssist = new ItemBeltStepAssist();
     ItemBeltWaterWalking = new ItemBeltWaterWalking();
     ItemNecklaceDiving = new ItemNecklaceDiving();
@@ -43,12 +44,8 @@ public class BaubleliciousItems {
 
 
     GameRegistry.registerItem(ItemMagicCore, "ItemMagicCore");
-    //GameRegistry.registerItem(ItemBindingGem, "ItemBindingGem");
-
-
+    GameRegistry.registerItem(bindingGem, BINDING_GEM_KEY);
   }
-
-
 }
 
 

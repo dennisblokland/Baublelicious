@@ -13,7 +13,7 @@ public class BlockMod extends Block {
 
   public BlockMod(Material par2Material) {
     super(par2Material);
-    if (registerInCreative()) setCreativeTab(Baublelicious.TabBaublelicious);
+    if (registerInCreative()) setCreativeTab(Baublelicious.tabBaublelicious);
   }
 
   @Override

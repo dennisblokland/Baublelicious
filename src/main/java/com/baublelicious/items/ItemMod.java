@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 
 public class ItemMod extends Item {
   public ItemMod() {
-    setCreativeTab(Baublelicious.TabBaublelicious);
+    setCreativeTab(Baublelicious.tabBaublelicious);
   }
 
   @Override
