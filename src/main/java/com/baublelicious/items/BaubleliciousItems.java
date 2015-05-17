@@ -32,7 +32,7 @@ public static void init() {
 ItemAmulet = new ItemAmulet();
 ItemRing = new ItemRing();
 ItemBelt = new ItemBelt();
-ItemBindingGem = new ItemBindingGem();
+//ItemBindingGem = new ItemBindingGem();
 ItemBeltStepAssist = new ItemBeltStepAssist();
 ItemBeltWaterWalking = new ItemBeltWaterWalking();
 ItemNecklesDiving = new ItemNecklesDiving();
