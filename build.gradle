@@ -1,0 +1,63 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+
+    dependencies {
+        classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
+    }
+}
+
+repositories {
+    maven { // Waila
+        name "Mobius"
+        url "http://mobiusstrip.eu/maven"
+    }
+    maven { // NEI/CCC
+        name "Chickenbones"
+        url "http://chickenbones.net/maven/"
+    }
+}
+
+apply plugin: "idea"
+apply plugin: "forge"
+
+version = "1.7.10-1.0.7"
+group= "com.baublelicious"
+archivesBaseName = "baublelicious"
+
+minecraft {
+    version = "1.7.10-10.13.3.1408-1.7.10"
+    runDir = "run"
+}
+
+dependencies {
+	// Not actual dependencies, just for dev environment
+    compile "codechicken:CodeChickenLib:1.7.10-1.1.3.136:dev"
+    compile "codechicken:CodeChickenCore:1.7.10-1.0.6.43:dev"
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.4.107:dev"
+    compile "mcp.mobius.waila:Waila:1.5.10:dev"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include "mcmod.info"
+
+        expand "version": project.version, "mcversion": project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude "mcmod.info"
+    }
+}
