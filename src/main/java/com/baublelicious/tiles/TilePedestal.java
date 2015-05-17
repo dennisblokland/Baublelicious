@@ -3,6 +3,7 @@ package com.baublelicious.tiles;
 import baubles.api.IBauble;
 import com.baublelicious.helpers.NBTHelper;
 import com.baublelicious.items.BaubleliciousItems;
+import com.baublelicious.items.IPedestalBauble;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -19,7 +20,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-
 
 public class TilePedestal extends TileEntity implements IInventory {
   public EntityItem itemEntity = null;
@@ -43,7 +43,7 @@ public class TilePedestal extends TileEntity implements IInventory {
   }
 
   private void baublesUpdate() {
-    ItemStack baubles = getStackInSlot(0);
+    ItemStack bauble = getStackInSlot(0);
 
     AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(this.xCoord - 25, this.yCoord - 25, this.zCoord - 25, this.xCoord + 25, this.yCoord + 25, this.zCoord + 25);
     axisalignedbb.maxY = this.worldObj.getHeight();
@@ -57,9 +57,9 @@ public class TilePedestal extends TileEntity implements IInventory {
       if (gemCompound.hasKey("PlayerUUID")) {
         while (iterator.hasNext()) {
           player = (EntityPlayer) iterator.next();
-          if (baubles != null && baubles.getItem() instanceof IBauble) {
+          if (bauble != null && bauble.getItem() instanceof IPedestalBauble) {
             if (player.getUniqueID().toString().equals(gemCompound.getString("PlayerUUID"))) {
-              ((IBauble) baubles.getItem()).onWornTick(baubles, player);
+              ((IPedestalBauble) bauble.getItem()).onPedestalTick(bauble, player);
             }
           }
         }
@@ -148,7 +148,7 @@ public class TilePedestal extends TileEntity implements IInventory {
   public boolean isItemValidForSlot(int slot, ItemStack stack) {
     switch (slot) {
       case 0:
-        return stack != null && stack.getItem() instanceof IBauble; //TODO: check instance of pedestal bauble
+        return stack != null && stack.getItem() instanceof IPedestalBauble;
       case 1:
         return stack != null && stack.getItem() == BaubleliciousItems.bindingGem;
     }

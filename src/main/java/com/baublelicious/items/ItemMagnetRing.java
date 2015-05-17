@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemMagnetRing extends ItemBaubles {
+public class ItemMagnetRing extends ItemBaubles implements IPedestalBauble {
   private final float fudgeFactor = 0.0f;
   private float rangeBase;
 
@@ -109,6 +109,11 @@ public class ItemMagnetRing extends ItemBaubles {
       }
     }
 
+  }
+
+  @Override
+  public void onPedestalTick(ItemStack bauble, EntityPlayer player) {
+    onWornTick(bauble, player);
   }
 }
 

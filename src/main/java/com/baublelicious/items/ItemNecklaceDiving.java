@@ -10,7 +10,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class ItemNecklaceDiving extends ItemBaubles implements IBauble {
+public class ItemNecklaceDiving extends ItemBaubles implements IBauble, IPedestalBauble {
 
   public ItemNecklaceDiving() {
     super();
@@ -37,18 +37,11 @@ public class ItemNecklaceDiving extends ItemBaubles implements IBauble {
 
     if (flag) {
       if (itemstack.getItemDamage() == 0 && !player.isPotionActive(Potion.waterBreathing)) {
-        //player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id,40,0,true));
-
-
         if (player.getAir() == 1 && player instanceof EntityPlayer) {
-
           player.setAir(300);
-
-
         }
       }
     }
-
   }
 
 
@@ -59,12 +52,8 @@ public class ItemNecklaceDiving extends ItemBaubles implements IBauble {
     }
   }
 
-
   @Override
-  public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-    // TODO Auto-generated method stub
-
+  public void onPedestalTick(ItemStack bauble, EntityPlayer player) {
+    onWornTick(bauble, player);
   }
-
-
 }

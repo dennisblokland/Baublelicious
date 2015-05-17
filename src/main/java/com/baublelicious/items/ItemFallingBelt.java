@@ -5,7 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-public class ItemFallingBelt extends ItemBaubles {
+public class ItemFallingBelt extends ItemBaubles implements IPedestalBauble {
 
   public ItemFallingBelt() {
     setMaxDamage(1000);
@@ -20,12 +20,14 @@ public class ItemFallingBelt extends ItemBaubles {
   }
 
   @Override
-  public void onWornTick(ItemStack stack, EntityLivingBase player) {
-    EntityPlayer player1 = (EntityPlayer) player;
-    //if (player1)
-    player1.fallDistance = 0;
+  public void onWornTick(ItemStack stack, EntityLivingBase entity) {
+    EntityPlayer player = (EntityPlayer) entity;
+    player.fallDistance = 0;
+  }
 
-
+  @Override
+  public void onPedestalTick(ItemStack bauble, EntityPlayer player) {
+    player.fallDistance = 0;
   }
 }
 
