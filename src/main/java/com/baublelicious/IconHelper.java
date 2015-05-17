@@ -5,16 +5,13 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 
-public class iconhelper {
-
-
+public class IconHelper {
   public static IIcon forItem(IIconRegister ir, Item item) {
     return forName(ir, item.getUnlocalizedName().replaceAll("item.", ""));
-
   }
 
   public static IIcon forName(IIconRegister ir, String name) {
-    return ir.registerIcon(baublelicious.modid + ":" + name);
+    return ir.registerIcon(Baublelicious.modid + ":" + name);
   }
 
   public static IIcon forBlock(IIconRegister ir, Block block) {
@@ -32,6 +29,4 @@ public class iconhelper {
   public static IIcon forBlock(IIconRegister ir, Block block, String s) {
     return forName(ir, block.getUnlocalizedName().replaceAll("tile.", ""));
   }
-
-
 }

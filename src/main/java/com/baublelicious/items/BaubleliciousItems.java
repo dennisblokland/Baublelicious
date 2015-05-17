@@ -1,12 +1,12 @@
 package com.baublelicious.items;
 
-import com.baublelicious.baublelicious;
+import com.baublelicious.Baublelicious;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 
 
 public class BaubleliciousItems {
-  public static baublelicious instance;
+  public static Baublelicious instance;
   public static Item ItemBeltStepAssist;
   public static Item ItemBeltWaterWalking;
   public static Item ItemNecklesDiving;

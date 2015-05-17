@@ -1,6 +1,6 @@
 package com.baublelicious.network;
 
-import com.baublelicious.blocks.baubleliciousBlocks;
+import com.baublelicious.blocks.BaubleliciousBlocks;
 import com.baublelicious.items.BaubleliciousItems;
 import com.baublelicious.registery.BaubleliciousRecipe;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -8,7 +8,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class CommonProxy {
   public void preInit(FMLPreInitializationEvent event) {
     BaubleliciousItems.init();
-    baubleliciousBlocks.init();
+    BaubleliciousBlocks.init();
     BaubleliciousRecipe.init();
 
 

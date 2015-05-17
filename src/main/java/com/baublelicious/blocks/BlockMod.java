@@ -1,7 +1,7 @@
 package com.baublelicious.blocks;
 
-import com.baublelicious.baublelicious;
-import com.baublelicious.iconhelper;
+import com.baublelicious.Baublelicious;
+import com.baublelicious.IconHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,7 +13,7 @@ public class BlockMod extends Block {
 
   public BlockMod(Material par2Material) {
     super(par2Material);
-    if (registerInCreative()) setCreativeTab(baublelicious.TabBaublelicious);
+    if (registerInCreative()) setCreativeTab(Baublelicious.TabBaublelicious);
   }
 
   @Override
@@ -29,7 +29,7 @@ public class BlockMod extends Block {
   @Override
   @SideOnly(Side.CLIENT)
   public void registerBlockIcons(IIconRegister par1IconRegister) {
-    blockIcon = iconhelper.forBlock(par1IconRegister, this);
+    blockIcon = IconHelper.forBlock(par1IconRegister, this);
   }
 
   boolean registerInCreative() {

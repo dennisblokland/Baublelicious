@@ -1,6 +1,6 @@
 package com.baublelicious.registery;
 
-import com.baublelicious.blocks.baubleliciousBlocks;
+import com.baublelicious.blocks.BaubleliciousBlocks;
 import com.baublelicious.items.BaubleliciousItems;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
@@ -31,8 +31,8 @@ public abstract class BaubleliciousRecipe {
 
     //blocks
 
-    // GameRegistry.addRecipe(new ItemStack(baubleliciousBlocks.BlockPedestal)," G "," p "," Q ", 'g', Blocks.glass, 'Q', Blocks.quartz_block,'p', new ItemStack(Blocks.quartz_block),1,2);
-    GameRegistry.addRecipe(new ItemStack(baubleliciousBlocks.BlockPedestal), new Object[] { " G ", " p ", "QQQ", 'G', Blocks.glass, 'Q', new ItemStack(Blocks.quartz_block, 1, 0), 'p', new ItemStack(Blocks.quartz_block, 1, 2) });
+    // GameRegistry.addRecipe(new ItemStack(BaubleliciousBlocks.BlockPedestal)," G "," p "," Q ", 'g', Blocks.glass, 'Q', Blocks.quartz_block,'p', new ItemStack(Blocks.quartz_block),1,2);
+    GameRegistry.addRecipe(new ItemStack(BaubleliciousBlocks.BlockPedestal), new Object[] { " G ", " p ", "QQQ", 'G', Blocks.glass, 'Q', new ItemStack(Blocks.quartz_block, 1, 0), 'p', new ItemStack(Blocks.quartz_block, 1, 2) });
 
 
   }

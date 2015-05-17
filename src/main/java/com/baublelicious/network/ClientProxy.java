@@ -1,6 +1,6 @@
 package com.baublelicious.network;
 
-import com.baublelicious.blocks.baubleliciousBlocks;
+import com.baublelicious.blocks.BaubleliciousBlocks;
 import com.baublelicious.entity.TileentityPedestal;
 import com.baublelicious.handler.KeyHandler;
 import com.baublelicious.renderer.ItemRendererPedestalBlock;
@@ -22,7 +22,7 @@ public class ClientProxy extends CommonProxy {
   @Override
   public void registerRenderThings() {
     ClientRegistry.bindTileEntitySpecialRenderer(TileentityPedestal.class, new PedestalRenderer());
-    MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(baubleliciousBlocks.BlockPedestal), new ItemRendererPedestalBlock());
+    MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(BaubleliciousBlocks.BlockPedestal), new ItemRendererPedestalBlock());
   }
 
 }

@@ -6,7 +6,7 @@ package com.baublelicious;
  * <p/>
  * Basically, if you want to use mod id for example, you should always refer to constant in this class.
  */
-public class reference {
+public class Reference {
 
 
   public static final String BAUBLES_ROOT = "https://dl.dropboxusercontent.com/u/47135879/";

@@ -17,15 +17,16 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-@Mod(modid = baublelicious.modid, dependencies = "required-after:Baubles@[1.0.1.4,);")
-public class baublelicious
-
-{
+@Mod(modid = Baublelicious.modid, dependencies = "required-after:Baubles@[1.0.1.4,);")
+public class Baublelicious {
   public static final String modid = "baublelicious";
+
   @Instance("baublelicious")
-  public static baublelicious instance;
+  public static Baublelicious instance;
+
   @SidedProxy(clientSide = "com.baublelicious.network.ClientProxy", serverSide = "com.baublelicious.network.CommonProxy")
   public static CommonProxy proxy;
+
   public static CreativeTabs TabBaublelicious = new CreativeTabs("Baublelicious") {
     @Override
     public Item getTabIconItem() {

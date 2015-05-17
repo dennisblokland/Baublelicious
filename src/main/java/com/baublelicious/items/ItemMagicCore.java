@@ -1,6 +1,6 @@
 package com.baublelicious.items;
 
-import com.baublelicious.baublelicious;
+import com.baublelicious.Baublelicious;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -20,7 +20,7 @@ public class ItemMagicCore extends Item {
   public ItemMagicCore() {
     super();
     this.setHasSubtypes(true);
-    this.setCreativeTab(baublelicious.TabBaublelicious);
+    this.setCreativeTab(Baublelicious.TabBaublelicious);
     this.setUnlocalizedName("ItemMagicCore");
   }
 
@@ -30,7 +30,7 @@ public class ItemMagicCore extends Item {
     icons = new IIcon[3];
 
     for (int i = 0; i < icons.length; i++) {
-      icons[i] = par1IconRegister.registerIcon(baublelicious.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
+      icons[i] = par1IconRegister.registerIcon(Baublelicious.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
     }
   }
 

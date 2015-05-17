@@ -1,6 +1,6 @@
 package com.baublelicious.blocks;
 
-import com.baublelicious.baublelicious;
+import com.baublelicious.Baublelicious;
 import com.baublelicious.entity.TileentityPedestal;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,7 +30,7 @@ public class PedestalBlock extends BlockContainer {
     super(Material.wood);
     this.setBlockName("PedestalBlock");
     this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9444444F, 1.0F);
-    this.setCreativeTab(baublelicious.TabBaublelicious);
+    this.setCreativeTab(Baublelicious.TabBaublelicious);
     setHardness(1.0F);
   }
 
@@ -86,7 +86,7 @@ public class PedestalBlock extends BlockContainer {
       return false;
     }
     //code to open gui explained later
-    player.openGui(baublelicious.instance, 0, world, x, y, z);
+    player.openGui(Baublelicious.instance, 0, world, x, y, z);
     return true;
   }
 
