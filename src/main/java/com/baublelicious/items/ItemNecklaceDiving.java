@@ -10,12 +10,12 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class ItemNecklesDiving extends ItemBaubles implements IBauble {
+public class ItemNecklaceDiving extends ItemBaubles implements IBauble {
 
-  public ItemNecklesDiving() {
+  public ItemNecklaceDiving() {
     super();
     this.setMaxStackSize(1);
-    this.setUnlocalizedName("ItemNecklesDiving");
+    this.setUnlocalizedName("ItemNecklaceDiving");
   }
 
 
