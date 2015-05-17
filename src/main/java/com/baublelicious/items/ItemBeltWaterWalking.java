@@ -16,32 +16,33 @@ public class ItemBeltWaterWalking extends ItemBaubles implements IBauble {
 
   }
 
-
   @Override
   public BaubleType getBaubleType(ItemStack itemstack) {
     return BaubleType.BELT;
   }
 
-
   @Override
   public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
     World world = player.worldObj;
-    int i = MathHelper.floor_double(player.posX);
-    int j = MathHelper.floor_double(player.boundingBox.minY - 1);
-    int k = MathHelper.floor_double(player.posZ);
-    Material m = world.getBlock(i, j, k).getMaterial();
-    boolean flag = (m == Material.water);
+    int x = MathHelper.floor_double(player.posX);
+    int y = MathHelper.floor_double(player.boundingBox.minY - 0.11f);
+    int yPaddle = MathHelper.floor_double(player.boundingBox.minY + 0.05f);
+    int z = MathHelper.floor_double(player.posZ);
+    Material mWater = world.getBlock(x, y, z).getMaterial();
+    Material mPaddle = world.getBlock(x, yPaddle, z).getMaterial();
+    boolean waterBelow = (mWater == Material.water);
+    boolean paddlingInWater = (mPaddle == Material.water);
 
-
-    if (flag && player.motionY < 0.0D && player.isSneaking() == false) {
-
+    if (waterBelow && player.motionY < 0.0D && !player.isSneaking()) {
       player.posY += -player.motionY;
       player.motionY = 0.0D;
       player.fallDistance = 0.0F;
+    }
 
+    if ((player.isInWater() || paddlingInWater) && !player.isSneaking()) {
+      player.motionY = 0.1f;
     }
   }
-
 
   @Override
   public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
@@ -50,12 +51,9 @@ public class ItemBeltWaterWalking extends ItemBaubles implements IBauble {
     }
   }
 
-
   @Override
   public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 
 
   }
-
-
 }
