@@ -1,6 +1,8 @@
 package com.baublelicious.tiles;
 
 import baubles.api.IBauble;
+import com.baublelicious.helpers.NBTHelper;
+import com.baublelicious.items.BaubleliciousItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -13,12 +15,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.Constants;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 
 public class TilePedestal extends TileEntity implements IInventory {
   public EntityItem itemEntity = null;
-//  public UUID owner = new UUID(0, 0);
   private ItemStack[] contents = new ItemStack[getSizeInventory()];
 
   @Override
@@ -35,35 +39,28 @@ public class TilePedestal extends TileEntity implements IInventory {
   public void updateEntity() {
     super.updateEntity();
 
-    this.baublesUpdate();
+    baublesUpdate();
   }
 
   private void baublesUpdate() {
-    TileEntity te = this;
-    TilePedestal tileAltar = (TilePedestal) te;
-
-    ItemStack baubles = tileAltar.getStackInSlot(0);
+    ItemStack baubles = getStackInSlot(0);
 
     AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(this.xCoord - 25, this.yCoord - 25, this.zCoord - 25, this.xCoord + 25, this.yCoord + 25, this.zCoord + 25);
     axisalignedbb.maxY = this.worldObj.getHeight();
     List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
     Iterator iterator = list.iterator();
-    EntityPlayer entityplayer;
+    EntityPlayer player;
 
-    ItemStack gem = tileAltar.getStackInSlot(1);
+    ItemStack gem = getStackInSlot(1);
     if (gem != null) {
-
-      while (iterator.hasNext()) {
-        String name = gem.getTagCompound().getString("name");
-
-        entityplayer = (EntityPlayer) iterator.next();
-        String PLayerName = entityplayer.getDisplayName();
-        Set<String> playersInArea = new HashSet<String>();
-        playersInArea.add(PLayerName);
-        System.out.println("playersInArea" + playersInArea);
-        if (baubles != null && baubles.getItem() instanceof IBauble) {
-          if (entityplayer.getDisplayName().equals(name)) {
-            ((IBauble) baubles.getItem()).onWornTick(baubles, entityplayer);
+      NBTTagCompound gemCompound = NBTHelper.getItemStackCompound(gem);
+      if (gemCompound.hasKey("PlayerUUID")) {
+        while (iterator.hasNext()) {
+          player = (EntityPlayer) iterator.next();
+          if (baubles != null && baubles.getItem() instanceof IBauble) {
+            if (player.getUniqueID().toString().equals(gemCompound.getString("PlayerUUID"))) {
+              ((IBauble) baubles.getItem()).onWornTick(baubles, player);
+            }
           }
         }
       }
@@ -148,9 +145,15 @@ public class TilePedestal extends TileEntity implements IInventory {
   }
 
   @Override
-  public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-    return itemstack != null && itemstack.getItem() instanceof IBauble;
+  public boolean isItemValidForSlot(int slot, ItemStack stack) {
+    switch (slot) {
+      case 0:
+        return stack != null && stack.getItem() instanceof IBauble; //TODO: check instance of pedestal bauble
+      case 1:
+        return stack != null && stack.getItem() == BaubleliciousItems.bindingGem;
+    }
 
+    return false;
   }
 
   @Override
