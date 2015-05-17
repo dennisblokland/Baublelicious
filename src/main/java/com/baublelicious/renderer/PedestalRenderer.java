@@ -1,6 +1,6 @@
 package com.baublelicious.renderer;
 
-import com.baublelicious.entity.TileentityPedestal;
+import com.baublelicious.tiles.TilePedestal;
 import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -70,9 +70,9 @@ public class PedestalRenderer extends TileEntitySpecialRenderer {
     GL11.glPopMatrix();
     GL11.glPopMatrix();
 
-    TileentityPedestal disp = (TileentityPedestal) te;
+    TilePedestal disp = (TilePedestal) te;
 
-    TileentityPedestal tileAltar = (TileentityPedestal) te;
+    TilePedestal tileAltar = (TilePedestal) te;
 
     if (tileAltar.getStackInSlot(0) != null) {
       GL11.glPushMatrix();

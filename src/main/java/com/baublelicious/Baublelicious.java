@@ -1,6 +1,5 @@
 package com.baublelicious;
 
-import com.baublelicious.entity.TileentityPedestal;
 import com.baublelicious.handler.PacketHandler;
 import com.baublelicious.items.BaubleliciousItems;
 import com.baublelicious.network.CommonProxy;
@@ -13,14 +12,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-@Mod(modid = Baublelicious.modid, dependencies = "required-after:Baubles@[1.0.1.4,);")
+@Mod(modid = ModInfo.MOD_ID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = "required-after:Baubles@[1.0.1.4,);")
 public class Baublelicious {
-  public static final String modid = "baublelicious";
-
   @Instance("baublelicious")
   public static Baublelicious instance;
 
@@ -33,9 +29,8 @@ public class Baublelicious {
       return BaubleliciousItems.ItemNecklesDiving;
     }
   };
-  public static SimpleNetworkWrapper network;
-  public static boolean isCoFHCoreLoaded;
 
+  public static SimpleNetworkWrapper network;
 
   @EventHandler
   public void preInit(FMLPreInitializationEvent event) {
@@ -44,26 +39,18 @@ public class Baublelicious {
     proxy.preInit(event);
     network = NetworkRegistry.INSTANCE.newSimpleChannel("toggle");
 
-    //	isCoFHCoreLoaded = Loader.isModLoaded("CoFHCore");
     PacketHandler.preInit();
   }
 
 
   @EventHandler
   public void init(FMLInitializationEvent event) {
-
     NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     proxy.init();
-
-
   }
 
   @EventHandler
   public void load(FMLInitializationEvent event) {
     proxy.registerRenderThings();
-    GameRegistry.registerTileEntity(TileentityPedestal.class, "TileentityPedistal");
-
-
   }
-
 }

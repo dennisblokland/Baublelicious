@@ -30,6 +30,7 @@ public class ItemMagnetRing extends ItemBaubles {
     return BaubleType.RING;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void onWornTick(ItemStack stack, EntityLivingBase entity) {
     {

@@ -11,7 +11,7 @@ public class IconHelper {
   }
 
   public static IIcon forName(IIconRegister ir, String name) {
-    return ir.registerIcon(Baublelicious.modid + ":" + name);
+    return ir.registerIcon(ModInfo.RESOURCE_LOCATION + ":" + name);
   }
 
   public static IIcon forBlock(IIconRegister ir, Block block) {

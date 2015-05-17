@@ -1,4 +1,4 @@
-package com.baublelicious.entity;
+package com.baublelicious.tiles;
 
 import baubles.api.IBauble;
 import net.minecraft.entity.item.EntityItem;
@@ -16,20 +16,10 @@ import net.minecraftforge.common.util.Constants;
 import java.util.*;
 
 
-public class TileentityPedestal extends TileEntity implements IInventory {
-
-
-  public EntityItem itemEnt = null;
-  ;
-  public UUID owner = new UUID(0, 0);
-  public int rotation = 0;
+public class TilePedestal extends TileEntity implements IInventory {
+  public EntityItem itemEntity = null;
+//  public UUID owner = new UUID(0, 0);
   private ItemStack[] contents = new ItemStack[getSizeInventory()];
-
-
-  public TileentityPedestal() {
-
-
-  }
 
   @Override
   public int getSizeInventory() {
@@ -38,7 +28,6 @@ public class TileentityPedestal extends TileEntity implements IInventory {
 
   @Override
   public ItemStack getStackInSlot(int i) {
-
     return contents[i];
   }
 
@@ -47,14 +36,11 @@ public class TileentityPedestal extends TileEntity implements IInventory {
     super.updateEntity();
 
     this.baublesUpdate();
-
-
   }
-
 
   private void baublesUpdate() {
     TileEntity te = this;
-    TileentityPedestal tileAltar = (TileentityPedestal) te;
+    TilePedestal tileAltar = (TilePedestal) te;
 
     ItemStack baubles = tileAltar.getStackInSlot(0);
 
@@ -63,15 +49,11 @@ public class TileentityPedestal extends TileEntity implements IInventory {
     List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
     Iterator iterator = list.iterator();
     EntityPlayer entityplayer;
-    //System.out.println("list" + list);
-
 
     ItemStack gem = tileAltar.getStackInSlot(1);
     if (gem != null) {
 
       while (iterator.hasNext()) {
-
-
         String name = gem.getTagCompound().getString("name");
 
         entityplayer = (EntityPlayer) iterator.next();
@@ -82,14 +64,11 @@ public class TileentityPedestal extends TileEntity implements IInventory {
         if (baubles != null && baubles.getItem() instanceof IBauble) {
           if (entityplayer.getDisplayName().equals(name)) {
             ((IBauble) baubles.getItem()).onWornTick(baubles, entityplayer);
-
-
           }
         }
       }
     }
   }
-
 
   @Override
   public ItemStack decrStackSize(int i, int j) {
@@ -175,55 +154,53 @@ public class TileentityPedestal extends TileEntity implements IInventory {
   }
 
   @Override
-  public void readFromNBT(NBTTagCompound nbttagcompound) {
-    super.readFromNBT(nbttagcompound);
-    NBTTagList nbttaglist = nbttagcompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
+  public void readFromNBT(NBTTagCompound compound) {
+    super.readFromNBT(compound);
+    NBTTagList itemsList = compound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
     contents = new ItemStack[getSizeInventory()];
-    for (int i = 0; i < nbttaglist.tagCount(); i++) {
-      NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-      int j = nbttagcompound1.getByte("Slot") & 0xff;
+    for (int i = 0; i < itemsList.tagCount(); i++) {
+      NBTTagCompound itemTag = itemsList.getCompoundTagAt(i);
+      int j = itemTag.getByte("Slot") & 0xff;
       if (j >= 0 && j < contents.length) {
-        contents[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+        contents[j] = ItemStack.loadItemStackFromNBT(itemTag);
       }
     }
 
   }
 
   @Override
-  public void writeToNBT(NBTTagCompound nbttagcompound) {
-    super.writeToNBT(nbttagcompound);
-    NBTTagList nbttaglist = new NBTTagList();
+  public void writeToNBT(NBTTagCompound compound) {
+    super.writeToNBT(compound);
+    NBTTagList itemsList = new NBTTagList();
     for (int i = 0; i < contents.length; i++) {
       if (contents[i] != null) {
-        NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-        nbttagcompound1.setByte("Slot", (byte) i);
-        contents[i].writeToNBT(nbttagcompound1);
-        nbttaglist.appendTag(nbttagcompound1);
+        NBTTagCompound itemTag = new NBTTagCompound();
+        itemTag.setByte("Slot", (byte) i);
+        contents[i].writeToNBT(itemTag);
+        itemsList.appendTag(itemTag);
       }
     }
 
-    nbttagcompound.setTag("Items", nbttaglist);
-
+    compound.setTag("Items", itemsList);
   }
-
 
   public String getModelTexture() {
     return "baublelicious:textures/blocks/pedestal.png";
   }
 
   @Override
-  //Used to be onInventoryChanged
+  //Used to be onInventoryChanged - TODO: Really?
   public void markDirty() {
     super.markDirty();
     if (worldObj != null && contents[0] != null) {
-      itemEnt = new EntityItem(this.worldObj, this.xCoord, this.yCoord, this.zCoord, contents[0]);
-      itemEnt.hoverStart = 0;
-      itemEnt.rotationYaw = 0;
-      itemEnt.motionX = 0;
-      itemEnt.motionY = 0;
-      itemEnt.motionZ = 0;
+      itemEntity = new EntityItem(this.worldObj, this.xCoord, this.yCoord, this.zCoord, contents[0]);
+      itemEntity.hoverStart = 0;
+      itemEntity.rotationYaw = 0;
+      itemEntity.motionX = 0;
+      itemEntity.motionY = 0;
+      itemEntity.motionZ = 0;
     } else {
-      itemEnt = null;
+      itemEntity = null;
     }
   }
 
@@ -233,7 +210,5 @@ public class TileentityPedestal extends TileEntity implements IInventory {
     this.writeToNBT(nbtTag);
     return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, nbtTag);
   }
-
-
 }
 

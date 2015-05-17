@@ -1,7 +1,7 @@
 package com.baublelicious.network;
 
 import com.baublelicious.container.PedestalContainer;
-import com.baublelicious.entity.TileentityPedestal;
+import com.baublelicious.tiles.TilePedestal;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -9,7 +9,7 @@ import net.minecraft.util.StatCollector;
 
 public class GuiPedistal extends GuiContainer {
 
-  public GuiPedistal(InventoryPlayer inventoryPlayer, TileentityPedestal tileEntity) {
+  public GuiPedistal(InventoryPlayer inventoryPlayer, TilePedestal tileEntity) {
     //the container is instanciated and passed to the superclass for handling
     super(new PedestalContainer(inventoryPlayer, tileEntity));
   }

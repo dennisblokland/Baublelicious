@@ -1,6 +1,6 @@
 package com.baublelicious.container;
 
-import com.baublelicious.entity.TileentityPedestal;
+import com.baublelicious.tiles.TilePedestal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -9,9 +9,9 @@ import net.minecraft.item.ItemStack;
 
 public class PedestalContainer extends Container {
 
-  protected TileentityPedestal tileEntity;
+  protected TilePedestal tileEntity;
 
-  public PedestalContainer(InventoryPlayer inventoryPlayer, TileentityPedestal te) {
+  public PedestalContainer(InventoryPlayer inventoryPlayer, TilePedestal te) {
     tileEntity = te;
 
     //the Slot constructor takes the IInventory and the slot number in that it binds to

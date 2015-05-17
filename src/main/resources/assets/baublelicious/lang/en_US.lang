@@ -25,4 +25,4 @@ item.ItemBindingGem.name=Binding Gem
 
 
 #BLOCKS
-tile.PedestalBlock.name=Pedestal
+tile.BlockPedestal.name=Pedestal
