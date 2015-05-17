@@ -11,7 +11,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 
 public class ItemSpeedBelt extends ItemBaubles {
-
   final float speed;
   final float jump;
   final float fallBuffer;
@@ -19,8 +18,6 @@ public class ItemSpeedBelt extends ItemBaubles {
   public ItemSpeedBelt() {
     this("ItemSpeedBelt", 0.035F, 0.2F, 2F);
     this.setUnlocalizedName("ItemSpeedBelt");
-
-
   }
 
   public ItemSpeedBelt(String name, float speed, float jump, float fallBuffer) {
@@ -42,10 +39,14 @@ public class ItemSpeedBelt extends ItemBaubles {
 
     if (entity instanceof EntityPlayer) {
       EntityPlayer player = (EntityPlayer) entity;
-      if ((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F && !player.isInsideOfMaterial(Material.water))
+      if ((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F && !player.isInWater()) {
         player.moveFlying(0F, 1F, player.capabilities.isFlying ? speed : speed * 2);
-      player.stepHeight = 1F;
+        player.stepHeight = 1F;
+      } else {
+        player.stepHeight = 0.5F;
+      }
     }
+
   }
 
   @SubscribeEvent
@@ -70,5 +71,4 @@ public class ItemSpeedBelt extends ItemBaubles {
   public void onUnequipped(ItemStack stack, EntityLivingBase player) {
     player.stepHeight = 0.5F;
   }
-
 }
