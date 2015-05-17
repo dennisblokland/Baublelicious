@@ -14,10 +14,11 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.NAME, version = ModInfo.VERSION, dependencies = "required-after:Baubles@[1.0.1.4,);")
 public class Baublelicious {
-  @Instance("baublelicious")
+  @Instance(ModInfo.MOD_ID)
   public static Baublelicious instance;
 
   @SidedProxy(clientSide = "com.baublelicious.network.ClientProxy", serverSide = "com.baublelicious.network.CommonProxy")
@@ -31,9 +32,12 @@ public class Baublelicious {
   };
 
   public static SimpleNetworkWrapper network;
+  public static Logger log;
 
   @EventHandler
   public void preInit(FMLPreInitializationEvent event) {
+    log = event.getModLog();
+
     proxy.registerRenderThings();
 
     proxy.preInit(event);
