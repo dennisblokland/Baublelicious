@@ -37,6 +37,9 @@ archivesBaseName = "baublelicious"
 minecraft {
     version = "1.7.10-10.13.3.1408-1.7.10"
     runDir = "run"
+
+    replaceIn "src/main/java/com/baublelicious/ModInfo.java"
+    replace "@VERSION@", project.version
 }
 
 dependencies {
