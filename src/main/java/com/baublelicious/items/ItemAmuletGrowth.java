@@ -14,7 +14,7 @@ import net.minecraftforge.common.IPlantable;
 
 import java.util.List;
 
-public class ItemAmuletGrowth extends ItemBaubles implements IPedestalBauble {
+public class ItemAmuletGrowth extends ItemBaubles {
 
   public static String isActive;
   private int tickDelay = 100;
@@ -145,10 +145,5 @@ public class ItemAmuletGrowth extends ItemBaubles implements IPedestalBauble {
     }
 
     return par1ItemStack;
-  }
-
-  @Override
-  public void onPedestalTick(ItemStack bauble, EntityPlayer player) {
-    onWornTick(bauble, player);
   }
 }

@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
-public class ItemsAmuletNightvision extends ItemBaubles implements IPedestalBauble {
+public class ItemsAmuletNightvision extends ItemBaubles {
   public ItemsAmuletNightvision() {
     this.setUnlocalizedName("ItemsAmuletNightvision");
   }
@@ -20,10 +20,5 @@ public class ItemsAmuletNightvision extends ItemBaubles implements IPedestalBaub
   @Override
   public void onWornTick(ItemStack stack, EntityLivingBase entity) {
     entity.addPotionEffect(new PotionEffect(Potion.nightVision.id, 4, 1, true));
-  }
-
-  @Override
-  public void onPedestalTick(ItemStack bauble, EntityPlayer player) {
-    onWornTick(bauble, player);
   }
 }

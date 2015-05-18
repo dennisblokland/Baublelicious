@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 
-public class ItemSpeedBelt extends ItemBaubles implements IPedestalBauble {
+public class ItemSpeedBelt extends ItemBaubles {
   final float speed;
   final float jump;
   final float fallBuffer;
@@ -70,10 +70,5 @@ public class ItemSpeedBelt extends ItemBaubles implements IPedestalBauble {
   @Override
   public void onUnequipped(ItemStack stack, EntityLivingBase player) {
     player.stepHeight = 0.5F;
-  }
-
-  @Override
-  public void onPedestalTick(ItemStack bauble, EntityPlayer player) {
-    onWornTick(bauble, player);
   }
 }

@@ -2,28 +2,27 @@ package com.baublelicious.tiles;
 
 import baubles.api.IBauble;
 import com.baublelicious.helpers.NBTHelper;
+import com.baublelicious.helpers.PlayerHelper;
 import com.baublelicious.items.BaubleliciousItems;
-import com.baublelicious.items.IPedestalBauble;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.Constants;
-
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class TilePedestal extends TileEntity implements IInventory {
   public EntityItem itemEntity = null;
   private ItemStack[] contents = new ItemStack[getSizeInventory()];
+
+  public String cachedUUID = null;
+  public ItemStack cachedBauble = null;
+  public boolean isActive = false;
 
   @Override
   public int getSizeInventory() {
@@ -39,32 +38,76 @@ public class TilePedestal extends TileEntity implements IInventory {
   public void updateEntity() {
     super.updateEntity();
 
-    baublesUpdate();
+    if (hasWorldObj()) baublesUpdate();
   }
 
+  @SuppressWarnings("unchecked")
   private void baublesUpdate() {
-    ItemStack bauble = getStackInSlot(0);
-
-    AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(this.xCoord - 25, this.yCoord - 25, this.zCoord - 25, this.xCoord + 25, this.yCoord + 25, this.zCoord + 25);
-    axisalignedbb.maxY = this.worldObj.getHeight();
-    List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
-    Iterator iterator = list.iterator();
-    EntityPlayer player;
-
-    ItemStack gem = getStackInSlot(1);
-    if (gem != null) {
-      NBTTagCompound gemCompound = NBTHelper.getItemStackCompound(gem);
-      if (gemCompound.hasKey("PlayerUUID")) {
-        while (iterator.hasNext()) {
-          player = (EntityPlayer) iterator.next();
-          if (bauble != null && bauble.getItem() instanceof IPedestalBauble) {
-            if (player.getUniqueID().toString().equals(gemCompound.getString("PlayerUUID"))) {
-              ((IPedestalBauble) bauble.getItem()).onPedestalTick(bauble, player);
+    if (isActive) {
+      ItemStack bauble = getStackInSlot(0);
+      if (bauble != null && bauble.isItemEqual(cachedBauble)) {
+        if (getUUIDFromGem().equals(cachedUUID)) {
+          Item baubleItem = bauble.getItem();
+          if (baubleItem instanceof IBauble) {
+            EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
+            if (player != null) {
+              if (PlayerHelper.isWithinRangeOf(player, xCoord, yCoord, zCoord, 5)) {
+                ((IBauble) bauble.getItem()).onWornTick(bauble, player);
+              } else {
+                deactivateBauble(player);
+              }
             }
+          }
+        } else {
+          EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
+          if (player != null) {
+            deactivateBauble(player);
+          }
+        }
+      } else {
+        EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
+        if (player != null) {
+          deactivateBauble(player);
+        }
+      }
+    } else {
+      ItemStack bauble = getStackInSlot(0);
+      if (bauble != null) {
+        Item baubleItem = bauble.getItem();
+        if (baubleItem instanceof IBauble) {
+          EntityPlayer player = PlayerHelper.getPlayerFromUUID(getUUIDFromGem());
+          if (player != null && PlayerHelper.isWithinRangeOf(player, xCoord, yCoord, zCoord, 5)) {
+            activateBauble(bauble, player);
           }
         }
       }
     }
+
+  }
+
+  private void activateBauble(ItemStack bauble, EntityPlayer player) {
+    isActive = true;
+    cachedBauble = bauble.copy();
+    cachedUUID = player.getUniqueID().toString();
+    ((IBauble) bauble.getItem()).onEquipped(bauble, player);
+  }
+
+  private void deactivateBauble(EntityPlayer player) {
+    isActive = false;
+    cachedUUID = null;
+    ((IBauble) cachedBauble.getItem()).onUnequipped(cachedBauble, player);
+    cachedBauble = null;
+  }
+
+  public String getUUIDFromGem() {
+    ItemStack gem = getStackInSlot(1);
+    if (gem != null) {
+      NBTTagCompound gemCompound = NBTHelper.getItemStackCompound(gem);
+      if (gemCompound.hasKey("PlayerUUID")) {
+        return gemCompound.getString("PlayerUUID");
+      }
+    }
+    return "";
   }
 
   @Override
@@ -148,7 +191,7 @@ public class TilePedestal extends TileEntity implements IInventory {
   public boolean isItemValidForSlot(int slot, ItemStack stack) {
     switch (slot) {
       case 0:
-        return stack != null && stack.getItem() instanceof IPedestalBauble;
+        return stack != null && stack.getItem() instanceof IBauble;
       case 1:
         return stack != null && stack.getItem() == BaubleliciousItems.bindingGem;
     }
@@ -192,7 +235,7 @@ public class TilePedestal extends TileEntity implements IInventory {
   }
 
   @Override
-  //Used to be onInventoryChanged - TODO: Really?
+  //Used to be onInventoryChanged
   public void markDirty() {
     super.markDirty();
     if (worldObj != null && contents[0] != null) {

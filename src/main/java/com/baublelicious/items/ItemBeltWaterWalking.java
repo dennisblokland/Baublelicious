@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class ItemBeltWaterWalking extends ItemBaubles implements IBauble, IPedestalBauble {
+public class ItemBeltWaterWalking extends ItemBaubles implements IBauble {
 
   public ItemBeltWaterWalking() {
     super();
@@ -54,10 +54,5 @@ public class ItemBeltWaterWalking extends ItemBaubles implements IBauble, IPedes
 
   @Override
   public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-  }
-
-  @Override
-  public void onPedestalTick(ItemStack bauble, EntityPlayer player) {
-    onWornTick(bauble, player);
   }
 }

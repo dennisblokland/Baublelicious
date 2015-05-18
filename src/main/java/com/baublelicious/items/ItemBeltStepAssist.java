@@ -6,7 +6,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-public class ItemBeltStepAssist extends ItemBaubles implements IBauble, IPedestalBauble {
+public class ItemBeltStepAssist extends ItemBaubles implements IBauble {
   public ItemBeltStepAssist() {
     super();
     setUnlocalizedName("ItemBeltStepAssist");
@@ -43,15 +43,6 @@ public class ItemBeltStepAssist extends ItemBaubles implements IBauble, IPedesta
   @Override
   public void onEquippedOrLoadedIntoWorld(ItemStack stack, EntityLivingBase player) {
     player.stepHeight = 1F;
-  }
-
-  @Override
-  public void onPedestalTick(ItemStack bauble, EntityPlayer player) {
-    if ((player.onGround) && player.moveForward > 0F){
-      player.stepHeight = 1F;
-    } else {
-      player.stepHeight = 0.5f;
-    }
   }
 }
 

@@ -10,7 +10,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class ItemNecklaceDiving extends ItemBaubles implements IBauble, IPedestalBauble {
+public class ItemNecklaceDiving extends ItemBaubles implements IBauble {
 
   public ItemNecklaceDiving() {
     super();
@@ -50,10 +50,5 @@ public class ItemNecklaceDiving extends ItemBaubles implements IBauble, IPedesta
     if (!player.worldObj.isRemote) {
       player.worldObj.playSoundAtEntity(player, "random.orb", 0.1F, 1.3f);
     }
-  }
-
-  @Override
-  public void onPedestalTick(ItemStack bauble, EntityPlayer player) {
-    onWornTick(bauble, player);
   }
 }
