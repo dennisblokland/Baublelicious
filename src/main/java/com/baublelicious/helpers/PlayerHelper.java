@@ -3,6 +3,7 @@ package com.baublelicious.helpers;
 import baubles.api.IBauble;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
+import com.baublelicious.Baublelicious;
 import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,18 +21,7 @@ public class PlayerHelper {
 
   @SuppressWarnings("unchecked")
   public static EntityPlayer getPlayerFromUUID(String uuid) {
-    if (FMLCommonHandler.instance().getEffectiveSide().isClient()) {
-      return Minecraft.getMinecraft().thePlayer.getUniqueID().toString().equals(uuid) ? Minecraft.getMinecraft().thePlayer : null;
-    } else {
-      List<EntityPlayerMP> playerList = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
-      for (EntityPlayerMP player : playerList) {
-        if (player.getUniqueID().toString().equals(uuid)) {
-          return player;
-        }
-      }
-    }
-
-    return null;
+    return Baublelicious.proxy.getPlayerFromUUID(uuid);
   }
 
   public static boolean isWithinRangeOf(EntityPlayer player, int x, int y, int z, int range) {
