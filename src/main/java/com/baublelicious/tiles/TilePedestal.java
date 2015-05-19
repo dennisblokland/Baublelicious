@@ -22,11 +22,15 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
+import java.lang.ref.WeakReference;
+
 public class TilePedestal extends TileEntity implements IInventory, ITileRequestReceiver, ITileNBTReceiver {
+  private static final int RANGE = 32;
+
   public EntityItem itemEntity = null;
-  public String cachedUUID = null;
   public ItemStack cachedBauble = null;
   public boolean isActive = false;
+  public WeakReference<EntityPlayer> cachedPlayer;
   private ItemStack[] contents = new ItemStack[getSizeInventory()];
 
   @Override
@@ -52,32 +56,30 @@ public class TilePedestal extends TileEntity implements IInventory, ITileRequest
   @SuppressWarnings("unchecked")
   private void baublesUpdate() {
     if (isActive) {
-      ItemStack bauble = getStackInSlot(0);
-      if (bauble != null && bauble.isItemEqual(cachedBauble)) {
-        if (getUUIDFromGem().equals(cachedUUID)) {
-          Item baubleItem = bauble.getItem();
-          if (baubleItem instanceof IBauble) {
-            EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
-            if (player != null) {
-              if (PlayerHelper.isWithinRangeOf(player, xCoord, yCoord, zCoord, 5)) {
+      EntityPlayer player = cachedPlayer.get();
+      if (player != null) {
+        ItemStack bauble = getStackInSlot(0);
+        if (bauble != null && bauble.isItemEqual(cachedBauble)) {
+          if (getUUIDFromGem().equals(player.getUniqueID().toString())) {
+            Item baubleItem = bauble.getItem();
+            if (baubleItem instanceof IBauble) {
+              if (PlayerHelper.isWithinRangeOf(player, xCoord, yCoord, zCoord, RANGE)) {
                 if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem()))
                   ((IBauble) bauble.getItem()).onWornTick(bauble, player);
               } else {
                 if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem())) deactivateBauble(player);
               }
             }
-          }
-        } else {
-          EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
-          if (player != null) {
+          } else {
             if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem())) deactivateBauble(player);
           }
-        }
-      } else {
-        EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
-        if (player != null) {
+        } else {
           if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem())) deactivateBauble(player);
         }
+      } else {
+        isActive = false;
+        cachedPlayer = null;
+        cachedBauble = null;
       }
     } else {
       ItemStack bauble = getStackInSlot(0);
@@ -85,7 +87,7 @@ public class TilePedestal extends TileEntity implements IInventory, ITileRequest
         Item baubleItem = bauble.getItem();
         if (baubleItem instanceof IBauble) {
           EntityPlayer player = PlayerHelper.getPlayerFromUUID(getUUIDFromGem());
-          if (player != null && PlayerHelper.isWithinRangeOf(player, xCoord, yCoord, zCoord, 5)) {
+          if (player != null && PlayerHelper.isWithinRangeOf(player, xCoord, yCoord, zCoord, RANGE)) {
             if (!PlayerHelper.isWearingBauble(player, (IBauble) baubleItem)) activateBauble(bauble, player);
           }
         }
@@ -97,13 +99,13 @@ public class TilePedestal extends TileEntity implements IInventory, ITileRequest
   private void activateBauble(ItemStack bauble, EntityPlayer player) {
     isActive = true;
     cachedBauble = bauble.copy();
-    cachedUUID = player.getUniqueID().toString();
+    cachedPlayer = new WeakReference<>(player);
     ((IBauble) bauble.getItem()).onEquipped(bauble, player);
   }
 
   private void deactivateBauble(EntityPlayer player) {
     isActive = false;
-    cachedUUID = null;
+    cachedPlayer = null;
     ((IBauble) cachedBauble.getItem()).onUnequipped(cachedBauble, player);
     cachedBauble = null;
   }
@@ -120,7 +122,7 @@ public class TilePedestal extends TileEntity implements IInventory, ITileRequest
   }
 
   public void onBlockBreak() {
-    EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
+    EntityPlayer player = cachedPlayer.get();
     if (player != null) {
       deactivateBauble(player);
     }
@@ -250,10 +252,6 @@ public class TilePedestal extends TileEntity implements IInventory, ITileRequest
       }
     }
     compound.setTag("Items", itemsList);
-  }
-
-  public String getModelTexture() {
-    return "baublelicious:textures/blocks/pedestal.png";
   }
 
   @Override
