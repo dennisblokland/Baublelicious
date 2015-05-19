@@ -1,12 +1,17 @@
 package com.baublelicious.tiles;
 
 import baubles.api.IBauble;
-import baubles.common.lib.PlayerHandler;
 import com.baublelicious.helpers.NBTHelper;
 import com.baublelicious.helpers.PlayerHelper;
 import com.baublelicious.items.BaubleliciousItems;
+import com.baublelicious.network.NetworkRegister;
+import com.baublelicious.network.messages.MessageTileNBT;
+import com.baublelicious.network.messages.MessageTileRequest;
+import com.baublelicious.network.receivers.ITileNBTReceiver;
+import com.baublelicious.network.receivers.ITileRequestReceiver;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,13 +22,12 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
-public class TilePedestal extends TileEntity implements IInventory {
+public class TilePedestal extends TileEntity implements IInventory, ITileRequestReceiver, ITileNBTReceiver {
   public EntityItem itemEntity = null;
-  private ItemStack[] contents = new ItemStack[getSizeInventory()];
-
   public String cachedUUID = null;
   public ItemStack cachedBauble = null;
   public boolean isActive = false;
+  private ItemStack[] contents = new ItemStack[getSizeInventory()];
 
   @Override
   public int getSizeInventory() {
@@ -38,6 +42,9 @@ public class TilePedestal extends TileEntity implements IInventory {
   @Override
   public void updateEntity() {
     super.updateEntity();
+    if (hasWorldObj() && worldObj.isRemote) { // On client, ask for the items from the server
+      NetworkRegister.wrapper.sendToServer(new MessageTileRequest(this, 0));
+    }
 
     if (hasWorldObj()) baublesUpdate();
   }
@@ -53,7 +60,8 @@ public class TilePedestal extends TileEntity implements IInventory {
             EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
             if (player != null) {
               if (PlayerHelper.isWithinRangeOf(player, xCoord, yCoord, zCoord, 5)) {
-                if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem())) ((IBauble) bauble.getItem()).onWornTick(bauble, player);
+                if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem()))
+                  ((IBauble) bauble.getItem()).onWornTick(bauble, player);
               } else {
                 if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem())) deactivateBauble(player);
               }
@@ -62,7 +70,7 @@ public class TilePedestal extends TileEntity implements IInventory {
         } else {
           EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
           if (player != null) {
-            if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem()))deactivateBauble(player);
+            if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem())) deactivateBauble(player);
           }
         }
       } else {
@@ -210,6 +218,10 @@ public class TilePedestal extends TileEntity implements IInventory {
   @Override
   public void readFromNBT(NBTTagCompound compound) {
     super.readFromNBT(compound);
+    readItemsFromNBT(compound);
+  }
+
+  public void readItemsFromNBT(NBTTagCompound compound) {
     NBTTagList itemsList = compound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
     contents = new ItemStack[getSizeInventory()];
     for (int i = 0; i < itemsList.tagCount(); i++) {
@@ -219,12 +231,15 @@ public class TilePedestal extends TileEntity implements IInventory {
         contents[j] = ItemStack.loadItemStackFromNBT(itemTag);
       }
     }
-
   }
 
   @Override
   public void writeToNBT(NBTTagCompound compound) {
     super.writeToNBT(compound);
+    writeItemsToNBT(compound);
+  }
+
+  public void writeItemsToNBT(NBTTagCompound compound) {
     NBTTagList itemsList = new NBTTagList();
     for (int i = 0; i < contents.length; i++) {
       if (contents[i] != null) {
@@ -234,7 +249,6 @@ public class TilePedestal extends TileEntity implements IInventory {
         itemsList.appendTag(itemTag);
       }
     }
-
     compound.setTag("Items", itemsList);
   }
 
@@ -265,6 +279,22 @@ public class TilePedestal extends TileEntity implements IInventory {
     NBTTagCompound nbtTag = new NBTTagCompound();
     this.writeToNBT(nbtTag);
     return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, nbtTag);
+  }
+
+  @Override
+  public void onTileNBT(NBTTagCompound compound) {
+    readItemsFromNBT(compound);
+  }
+
+  @Override
+  public void onTileRequest(int id, EntityPlayerMP player) {
+    switch (id) {
+      case 0: // Request items for client
+        NBTTagCompound itemsCompound = new NBTTagCompound();
+        writeItemsToNBT(itemsCompound);
+        NetworkRegister.wrapper.sendTo(new MessageTileNBT(this, itemsCompound), player);
+        break;
+    }
   }
 }
 
