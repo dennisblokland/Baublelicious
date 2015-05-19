@@ -19,8 +19,8 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 
-public class PedestalBlock extends BlockContainer {
-  public PedestalBlock(String key) {
+public class BlockPedestal extends BlockContainer {
+  public BlockPedestal(String key) {
     super(Material.wood);
     setBlockName(key);
     setBlockTextureName(ModInfo.RESOURCE_LOCATION  + ":" + key);
@@ -71,6 +71,10 @@ public class PedestalBlock extends BlockContainer {
 
   @Override
   public void breakBlock(World world, int x, int y, int z, Block block, int par6) {
+    TileEntity tileEntity = world.getTileEntity(x, y, z);
+    if (tileEntity instanceof TilePedestal) {
+      ((TilePedestal) tileEntity).onBlockBreak();
+    }
     dropItems(world, x, y, z);
     super.breakBlock(world, x, y, z, block, par6);
   }

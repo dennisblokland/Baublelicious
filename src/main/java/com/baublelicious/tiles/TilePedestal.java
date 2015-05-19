@@ -110,6 +110,13 @@ public class TilePedestal extends TileEntity implements IInventory {
     return "";
   }
 
+  public void onBlockBreak() {
+    EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
+    if (player != null) {
+      deactivateBauble(player);
+    }
+  }
+
   @Override
   public ItemStack decrStackSize(int i, int j) {
     if (this.contents[i] != null) {

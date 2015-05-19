@@ -10,7 +10,7 @@ public class BaubleliciousBlocks {
   public static Block BlockPedestal;
 
   public static void init() {
-    BlockPedestal = new PedestalBlock(PEDESTAL_KEY);
+    BlockPedestal = new BlockPedestal(PEDESTAL_KEY);
 
     GameRegistry.registerBlock(BlockPedestal, PEDESTAL_KEY);
 
