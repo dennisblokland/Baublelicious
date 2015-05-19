@@ -1,6 +1,7 @@
 package com.baublelicious.tiles;
 
 import baubles.api.IBauble;
+import baubles.common.lib.PlayerHandler;
 import com.baublelicious.helpers.NBTHelper;
 import com.baublelicious.helpers.PlayerHelper;
 import com.baublelicious.items.BaubleliciousItems;
@@ -52,22 +53,22 @@ public class TilePedestal extends TileEntity implements IInventory {
             EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
             if (player != null) {
               if (PlayerHelper.isWithinRangeOf(player, xCoord, yCoord, zCoord, 5)) {
-                ((IBauble) bauble.getItem()).onWornTick(bauble, player);
+                if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem())) ((IBauble) bauble.getItem()).onWornTick(bauble, player);
               } else {
-                deactivateBauble(player);
+                if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem())) deactivateBauble(player);
               }
             }
           }
         } else {
           EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
           if (player != null) {
-            deactivateBauble(player);
+            if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem()))deactivateBauble(player);
           }
         }
       } else {
         EntityPlayer player = PlayerHelper.getPlayerFromUUID(cachedUUID);
         if (player != null) {
-          deactivateBauble(player);
+          if (!PlayerHelper.isWearingBauble(player, (IBauble) cachedBauble.getItem())) deactivateBauble(player);
         }
       }
     } else {
@@ -77,7 +78,7 @@ public class TilePedestal extends TileEntity implements IInventory {
         if (baubleItem instanceof IBauble) {
           EntityPlayer player = PlayerHelper.getPlayerFromUUID(getUUIDFromGem());
           if (player != null && PlayerHelper.isWithinRangeOf(player, xCoord, yCoord, zCoord, 5)) {
-            activateBauble(bauble, player);
+            if (!PlayerHelper.isWearingBauble(player, (IBauble) baubleItem)) activateBauble(bauble, player);
           }
         }
       }
@@ -245,15 +246,17 @@ public class TilePedestal extends TileEntity implements IInventory {
   //Used to be onInventoryChanged
   public void markDirty() {
     super.markDirty();
-    if (worldObj != null && contents[0] != null) {
-      itemEntity = new EntityItem(this.worldObj, this.xCoord, this.yCoord, this.zCoord, contents[0]);
-      itemEntity.hoverStart = 0;
-      itemEntity.rotationYaw = 0;
-      itemEntity.motionX = 0;
-      itemEntity.motionY = 0;
-      itemEntity.motionZ = 0;
-    } else {
-      itemEntity = null;
+    if (hasWorldObj() && worldObj.isRemote) {
+      if (contents[0] != null) {
+        itemEntity = new EntityItem(this.worldObj, this.xCoord, this.yCoord, this.zCoord, contents[0]);
+        itemEntity.hoverStart = 0;
+        itemEntity.rotationYaw = 0;
+        itemEntity.motionX = 0;
+        itemEntity.motionY = 0;
+        itemEntity.motionZ = 0;
+      } else {
+        itemEntity = null;
+      }
     }
   }
 
