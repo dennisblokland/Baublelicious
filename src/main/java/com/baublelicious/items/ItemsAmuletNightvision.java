@@ -19,6 +19,12 @@ public class ItemsAmuletNightvision extends ItemBaubles {
 
   @Override
   public void onWornTick(ItemStack stack, EntityLivingBase entity) {
-    entity.addPotionEffect(new PotionEffect(Potion.nightVision.id, 4, 1, true));
+    PotionEffect effect = entity.getActivePotionEffect(Potion.nightVision);
+    if (effect == null || effect.getDuration() < 900) entity.addPotionEffect(new PotionEffect(Potion.nightVision.id, 1000, 1, true));
+  }
+
+  @Override
+  public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+    player.removePotionEffect(Potion.nightVision.id);
   }
 }
