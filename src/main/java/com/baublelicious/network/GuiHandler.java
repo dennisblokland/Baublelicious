@@ -1,6 +1,6 @@
 package com.baublelicious.network;
 
-import com.baublelicious.client.gui.GuiPedistal;
+import com.baublelicious.client.gui.GuiPedestal;
 import com.baublelicious.container.PedestalContainer;
 import com.baublelicious.tiles.TilePedestal;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -24,7 +24,7 @@ public class GuiHandler implements IGuiHandler {
   public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
     TileEntity tileEntity = world.getTileEntity(x, y, z);
     if (tileEntity instanceof TilePedestal) {
-      return new GuiPedistal(player.inventory, (TilePedestal) tileEntity);
+      return new GuiPedestal(player.inventory, (TilePedestal) tileEntity);
     }
     return null;
 
