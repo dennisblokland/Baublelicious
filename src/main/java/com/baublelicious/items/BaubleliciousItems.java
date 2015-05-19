@@ -7,6 +7,9 @@ import net.minecraft.item.Item;
 
 public class BaubleliciousItems {
   public static final String BINDING_GEM_KEY = "bindingGem";
+  public static final String ENTANGLED_AMULET_KEY = "entangledAmulet";
+  public static final String ENTANGLED_RING_KEY = "entangledRing";
+  public static final String ENTANGLED_BELT_KEY = "entangledBelt";
 
   public static Baublelicious instance;
   public static Item ItemBeltStepAssist;
@@ -19,12 +22,11 @@ public class BaubleliciousItems {
   public static Item ItemAmulet;
   public static Item ItemFallingBelt;
   public static Item ItemMagnetRing;
-  public static Item ItemAmuletMining;
   public static Item ItemAmuletGrowth;
-  public static Item ItemPhantomAmulet;
   public static Item ItemMagicCore;
   public static Item ItemsAmuletNightvision;
   public static Item bindingGem;
+  public static Item entangledAmulet, entangledRing, entangledBelt;
 
   public static void init() {
     ItemAmulet = new ItemAmulet();
@@ -42,9 +44,17 @@ public class BaubleliciousItems {
     ItemMagicCore = new ItemMagicCore();
     ItemsAmuletNightvision = new ItemsAmuletNightvision();
 
+    entangledAmulet = new ItemEntangledAmulet(ModInfo.MOD_ID + ":" + ENTANGLED_AMULET_KEY);
+    entangledRing = new ItemEntangledRing(ModInfo.MOD_ID + ":" + ENTANGLED_RING_KEY);
+    entangledBelt = new ItemEntangledBelt(ModInfo.MOD_ID + ":" + ENTANGLED_BELT_KEY);
+
 
     GameRegistry.registerItem(ItemMagicCore, "ItemMagicCore");
     GameRegistry.registerItem(bindingGem, BINDING_GEM_KEY);
+
+    GameRegistry.registerItem(entangledAmulet, ENTANGLED_AMULET_KEY);
+    GameRegistry.registerItem(entangledRing, ENTANGLED_RING_KEY);
+    GameRegistry.registerItem(entangledBelt, ENTANGLED_BELT_KEY);
   }
 }
 
