@@ -5,24 +5,24 @@ itemGroup.Baublelicious=Baublelicious
 item.ItemRing.name=Ring
 item.ItemBelt.name=Riem
 item.ItemAmulet.name=Amulet
+item.baublelicious:bindingGem.name=Binding Edelsteen
 
-item.ItemBeltStepAssist.name=Riem Van Het Wandelen
-item.ItemBeltWaterWalking.name=Riem Van Water Loopen
-item.ItemNecklaceDiving.name=Amulet Van Duiken
-item.ItemFlyingRing.name=Ring Van Het Vliegen
+item.ItemBeltStepAssist.name=Wandel Riem
+item.ItemBeltWaterWalking.name=Water Loop Riem
+item.ItemNecklaceDiving.name=Duik Amulet
+item.ItemFlyingRing.name=Vlieg Ring
 item.ItemStrengthRing.name=Ring Van Kracht
 item.ItemSpeedBelt.name=Snelheids Riem
 item.ItemMagnetRing.name=Magneet Ring
-item.ItemFallingBelt.name=Vallen Ring
+item.ItemFallingBelt.name=Val Ring
 item.ItemAmuletGrowth.name=Amulet Van De Groei
-item.ItemRFRing.name=Redstone Flux Ring
-item.ItemMagicCore.tier1.name=Magie kern
-item.ItemMagicCore.tier2.name=Magie kern
-item.ItemMagicCore.tier3.name=Magie kern
+item.ItemMagicCore.tier1.name=magische kern
+item.ItemMagicCore.tier2.name=magische kern
+item.ItemMagicCore.tier3.name=magische kern
+item.ItemsAmuletNightvision.name=Amulet van NachtVisie
 
-
-
-
+#BLOCKS
+tile.BlockPedestal.name=Pedestal
 
 
 
