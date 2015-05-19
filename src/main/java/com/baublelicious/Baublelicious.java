@@ -31,7 +31,6 @@ public class Baublelicious {
     }
   };
 
-  public static SimpleNetworkWrapper network;
   public static Logger log;
 
   @EventHandler
@@ -41,7 +40,6 @@ public class Baublelicious {
     proxy.registerRenderThings();
 
     proxy.preInit(event);
-    network = NetworkRegistry.INSTANCE.newSimpleChannel("toggle");
 
     NetworkRegister.registerMessages();
   }
