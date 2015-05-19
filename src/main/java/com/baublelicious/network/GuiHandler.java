@@ -1,5 +1,6 @@
 package com.baublelicious.network;
 
+import com.baublelicious.client.gui.GuiPedistal;
 import com.baublelicious.container.PedestalContainer;
 import com.baublelicious.tiles.TilePedestal;
 import cpw.mods.fml.common.network.IGuiHandler;

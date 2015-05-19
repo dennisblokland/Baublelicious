@@ -1,4 +1,4 @@
-package com.baublelicious.network;
+package com.baublelicious.client.gui;
 
 import com.baublelicious.container.PedestalContainer;
 import com.baublelicious.tiles.TilePedestal;
