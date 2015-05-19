@@ -1,6 +1,7 @@
 package com.baublelicious.handler;
 
 import com.baublelicious.items.BaubleliciousItems;
+import com.baublelicious.network.NetworkRegister;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
@@ -27,7 +28,7 @@ public class KeyHandler {
 
 
     if (toggle) {
-      PacketHandler.instance.sendToServer(new MessageToggleGrowthAmulet());
+      NetworkRegister.wrapper.sendToServer(new MessageToggleGrowthAmulet());
 
  /*       	        if (stack.stackTagCompound == null)
                   {

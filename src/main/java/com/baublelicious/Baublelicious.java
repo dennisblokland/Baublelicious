@@ -1,6 +1,6 @@
 package com.baublelicious;
 
-import com.baublelicious.handler.PacketHandler;
+import com.baublelicious.network.NetworkRegister;
 import com.baublelicious.items.BaubleliciousItems;
 import com.baublelicious.network.CommonProxy;
 import com.baublelicious.network.GuiHandler;
@@ -43,7 +43,7 @@ public class Baublelicious {
     proxy.preInit(event);
     network = NetworkRegistry.INSTANCE.newSimpleChannel("toggle");
 
-    PacketHandler.preInit();
+    NetworkRegister.registerMessages();
   }
 
 
