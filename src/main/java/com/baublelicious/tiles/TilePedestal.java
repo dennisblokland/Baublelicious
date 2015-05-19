@@ -30,7 +30,7 @@ public class TilePedestal extends TileEntity implements IInventory, ITileRequest
   public EntityItem itemEntity = null;
   public ItemStack cachedBauble = null;
   public boolean isActive = false;
-  public WeakReference<EntityPlayer> cachedPlayer;
+  public WeakReference<EntityPlayer> cachedPlayer = new WeakReference<>(null);
   private ItemStack[] contents = new ItemStack[getSizeInventory()];
 
   @Override
