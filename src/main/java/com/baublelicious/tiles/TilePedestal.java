@@ -4,19 +4,14 @@ import baubles.api.IBauble;
 import com.baublelicious.helpers.NBTHelper;
 import com.baublelicious.helpers.PlayerHelper;
 import com.baublelicious.items.BaubleliciousItems;
-import com.baublelicious.network.NetworkRegister;
-import com.baublelicious.network.messages.MessageTileNBT;
-import com.baublelicious.network.messages.MessageTileRequest;
-import com.baublelicious.network.receivers.ITileNBTReceiver;
-import com.baublelicious.network.receivers.ITileRequestReceiver;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -24,7 +19,7 @@ import net.minecraftforge.common.util.Constants;
 
 import java.lang.ref.WeakReference;
 
-public class TilePedestal extends TileEntity implements IInventory, ITileRequestReceiver, ITileNBTReceiver {
+public class TilePedestal extends TileEntity implements IInventory {
   private static final int RANGE = 32;
 
   public EntityItem itemEntity = null;
@@ -46,10 +41,6 @@ public class TilePedestal extends TileEntity implements IInventory, ITileRequest
   @Override
   public void updateEntity() {
     super.updateEntity();
-    if (hasWorldObj() && worldObj.isRemote) { // On client, ask for the items from the server
-      NetworkRegister.wrapper.sendToServer(new MessageTileRequest(this, 0));
-    }
-
     if (hasWorldObj()) baublesUpdate();
   }
 
@@ -274,25 +265,14 @@ public class TilePedestal extends TileEntity implements IInventory, ITileRequest
 
   @Override
   public Packet getDescriptionPacket() {
-    NBTTagCompound nbtTag = new NBTTagCompound();
-    this.writeToNBT(nbtTag);
-    return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, nbtTag);
+    NBTTagCompound compound = new NBTTagCompound();
+    writeItemsToNBT(compound);
+    return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, compound);
   }
 
   @Override
-  public void onTileNBT(NBTTagCompound compound) {
-    readItemsFromNBT(compound);
-  }
-
-  @Override
-  public void onTileRequest(int id, EntityPlayerMP player) {
-    switch (id) {
-      case 0: // Request items for client
-        NBTTagCompound itemsCompound = new NBTTagCompound();
-        writeItemsToNBT(itemsCompound);
-        NetworkRegister.wrapper.sendTo(new MessageTileNBT(this, itemsCompound), player);
-        break;
-    }
+  public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
+    readItemsFromNBT(packet.func_148857_g());
   }
 }
 
