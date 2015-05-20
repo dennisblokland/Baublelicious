@@ -49,7 +49,7 @@ public class ItemMagnetRing extends ItemBaubles {
         List<EntityXPOrb> listXP = world.getEntitiesWithinAABB(EntityXPOrb.class, bounds);
 
         for (EntityItem e : list) {
-          if (e.age >= 10) {
+          if (e.delayBeforeCanPickup == 0) {
             double x = entity.posX - e.posX;
             double y = entity.posY - e.posY;
             double z = entity.posZ - e.posZ;
