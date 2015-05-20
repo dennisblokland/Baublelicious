@@ -9,7 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
-public abstract class BaubleliciousRecipe {
+public class BaubleliciousRecipe {
   public static void init() {
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemRing), " G ", "I I", " G ", 'G', "nuggetGold", 'I', "ingotIron"));
     GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.ItemBelt), " L ", "L L", " L ", 'L', Items.leather);
@@ -39,9 +39,3 @@ public abstract class BaubleliciousRecipe {
     GameRegistry.addRecipe(new RecipeEntangledBauble(new ItemStack(BaubleliciousItems.entangledBelt), BaubleType.BELT));
   }
 }
-
-
-	
-	
-
-
