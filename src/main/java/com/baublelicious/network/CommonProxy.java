@@ -2,10 +2,8 @@ package com.baublelicious.network;
 
 import com.baublelicious.blocks.BaubleliciousBlocks;
 import com.baublelicious.items.BaubleliciousItems;
-import com.baublelicious.registery.BaubleliciousRecipe;
-import cpw.mods.fml.common.FMLCommonHandler;
+import com.baublelicious.recipes.BaubleliciousRecipe;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;

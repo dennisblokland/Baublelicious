@@ -6,6 +6,11 @@ item.ItemBelt.name=Belt
 item.ItemAmulet.name=Amulet
 item.baublelicious:bindingGem.name=Binding Gem
 
+# §3 - Colour code for dark aqua
+item.baublelicious:entangledAmulet.name=§3Entangled Amulet
+item.baublelicious:entangledRing.name=§3Entangled Ring
+item.baublelicious:entangledBelt.name=§3Entangled Belt
+
 item.ItemBeltStepAssist.name=Belt Of Hiking
 item.ItemBeltWaterWalking.name=Belt Of Water Walking
 item.ItemNecklaceDiving.name=Amulet Of Diving

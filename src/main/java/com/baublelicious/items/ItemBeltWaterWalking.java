@@ -3,9 +3,12 @@ package com.baublelicious.items;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -35,7 +38,11 @@ public class ItemBeltWaterWalking extends ItemBaubles implements IBauble {
     boolean paddlingInWater = (mPaddle == Material.water);
 
     if (waterBelow && player.motionY < 0.0D && !player.isSneaking()) {
-      player.posY += -player.motionY;
+      if (player instanceof EntityPlayerMP) {
+        player.posY -= player.yOffset;
+      } else {
+        player.posY -= player.motionY;
+      }
       player.motionY = 0.0D;
       player.fallDistance = 0.0F;
     }
