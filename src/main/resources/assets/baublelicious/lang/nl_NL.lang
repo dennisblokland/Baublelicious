@@ -1,4 +1,3 @@
-
 itemGroup.Baublelicious=Baublelicious
 
 # items
@@ -6,6 +5,11 @@ item.ItemRing.name=Ring
 item.ItemBelt.name=Riem
 item.ItemAmulet.name=Amulet
 item.baublelicious:bindingGem.name=Binding Edelsteen
+
+
+item.baublelicious:entangledAmulet.name=§3Verwikkeling Amulet
+item.baublelicious:entangledRing.name=§3Verwikkeling Ring
+item.baublelicious:entangledBelt.name=§3Verwikkeling Riem
 
 item.ItemBeltStepAssist.name=Wandel Riem
 item.ItemBeltWaterWalking.name=Water Loop Riem
@@ -23,11 +27,3 @@ item.ItemsAmuletNightvision.name=Amulet van NachtVisie
 
 #BLOCKS
 tile.BlockPedestal.name=Pedestal
-
-
-
-
-
-
-
-
