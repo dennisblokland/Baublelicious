@@ -61,4 +61,9 @@ public abstract class ItemEntangledBauble extends ItemBauble {
       }
     }
   }
+
+  @Override
+  public boolean hasEffect(ItemStack stack, int pass) {
+    return pass == 0 && getBaublesFromStack(stack).size() > 0;
+  }
 }
