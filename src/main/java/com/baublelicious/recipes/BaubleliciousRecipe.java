@@ -12,17 +12,17 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 public abstract class BaubleliciousRecipe {
   public static void init() {
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemRing), " G ", "I I", " G ", 'G', "nuggetGold", 'I', "ingotIron"));
-    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemBelt), " L ", "L L", " L ", 'L', Items.leather));
+    GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.ItemBelt), " L ", "L L", " L ", 'L', Items.leather);
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemAmulet), " L ", "L L", " I ", 'L', Items.leather, 'I', "ingotIron"));
 
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemAmuletGrowth), " A ", "BCB", " S ", 'A', BaubleliciousItems.ItemAmulet, 'S', "treeSapling", 'B', "dyeWhite", 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2)));
-    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemBeltStepAssist), "LBL", " C ", "   ", 'L', Items.leather_boots, 'B', BaubleliciousItems.ItemBelt, 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1)));
+    GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.ItemBeltStepAssist), "LBL", " C ", "   ", 'L', Items.leather_boots, 'B', BaubleliciousItems.ItemBelt, 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1));
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemBeltWaterWalking), " D ", "LBL", " C ", 'L', Items.water_bucket, 'B', BaubleliciousItems.ItemBelt, 'D', "gemDiamond", 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2)));
-    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemFallingBelt), " L ", "FBF", " C ", 'L', Items.leather_boots, 'B', BaubleliciousItems.ItemBelt, 'F', Items.feather, 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1)));
+    GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.ItemFallingBelt), " L ", "FBF", " C ", 'L', Items.leather_boots, 'B', BaubleliciousItems.ItemBelt, 'F', Items.feather, 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1));
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemFlyingRing), " C ", "FRF", " D ", 'N', Items.nether_star, 'R', BaubleliciousItems.ItemRing, 'D', "gemDiamond", 'F', Items.feather, 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2)));
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemMagnetRing), " M ", "IRI", " C ", 'C', Items.compass, 'R', BaubleliciousItems.ItemRing, 'I', "ingotIron", 'M', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 1)));
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemNecklaceDiving), " C ", "DAD", " B ", 'B', Items.glass_bottle, 'A', BaubleliciousItems.ItemAmulet, 'D', "gemDiamond", 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2)));
-    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemSpeedBelt), " P ", "SBS", " C ", 'P', new ItemStack(Items.potionitem, 1, 8226), 'B', BaubleliciousItems.ItemBelt, 'S', Items.sugar, 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 1)));
+    GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.ItemSpeedBelt), " P ", "SBS", " C ", 'P', new ItemStack(Items.potionitem, 1, 8226), 'B', BaubleliciousItems.ItemBelt, 'S', Items.sugar, 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 1));
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemMagicCore, 1), " R ", "GDG", " R ", 'R', "dustRedstone", 'G', "dustGlowstone", 'D', "gemDiamond"));
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 1), " D ", "RGR", " D ", 'R', "dustRedstone", 'G', "blockGold", 'D', "gemDiamond"));
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2), " G ", "RNR", " G ", 'R', "dustRedstone", 'G', "ingotGold", 'N', Items.nether_star));
