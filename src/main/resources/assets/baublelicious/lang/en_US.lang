@@ -11,19 +11,19 @@ item.baublelicious:entangledAmulet.name=§3Entangled Amulet
 item.baublelicious:entangledRing.name=§3Entangled Ring
 item.baublelicious:entangledBelt.name=§3Entangled Belt
 
-item.ItemBeltStepAssist.name=Belt Of Hiking
-item.ItemBeltWaterWalking.name=Belt Of Water Walking
-item.ItemNecklaceDiving.name=Amulet Of Diving
-item.ItemFlyingRing.name=Ring Of Flight
-item.ItemStrengthRing.name=Ring Of Strength
+item.ItemBeltStepAssist.name=Belt of Hiking
+item.ItemBeltWaterWalking.name=Belt of Water Walking
+item.ItemNecklaceDiving.name=Amulet of Diving
+item.ItemFlyingRing.name=Ring of Flight
+item.ItemStrengthRing.name=Ring of Strength
 item.ItemSpeedBelt.name=Speed Belt
 item.ItemMagnetRing.name=Magnet Ring
 item.ItemFallingBelt.name=Falling Belt
-item.ItemAmuletGrowth.name=Amulet Of Growth
+item.ItemAmuletGrowth.name=Amulet of Growth
 item.ItemMagicCore.tier1.name=Magic Core
 item.ItemMagicCore.tier2.name=Magic Core
 item.ItemMagicCore.tier3.name=Magic Core
-item.ItemsAmuletNightvision.name=Amulet Of Nightvision
+item.ItemsAmuletNightvision.name=Amulet of Nightvision
 
 #BLOCKS
 tile.BlockPedestal.name=Pedestal
