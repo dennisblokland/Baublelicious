@@ -27,6 +27,10 @@ public abstract class BaubleliciousRecipe {
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 1), " D ", "RGR", " D ", 'R', "dustRedstone", 'G', "blockGold", 'D', "gemDiamond"));
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2), " G ", "RNR", " G ", 'R', "dustRedstone", 'G', "ingotGold", 'N', Items.nether_star));
 
+    GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.entangledAmulet), " 3 ", "1a2", " e ", 'a', BaubleliciousItems.ItemAmulet, '3', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2), '2', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 1), '1', new ItemStack(BaubleliciousItems.ItemMagicCore, 1), 'e', Items.ender_pearl);
+    GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.entangledRing), " 3 ", "1r2", " e ", 'r', BaubleliciousItems.ItemRing, '3', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2), '2', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 1), '1', new ItemStack(BaubleliciousItems.ItemMagicCore, 1), 'e', Items.ender_pearl);
+    GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.entangledBelt), " 3 ", "1b2", " e ", 'b', BaubleliciousItems.ItemBelt, '3', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2), '2', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 1), '1', new ItemStack(BaubleliciousItems.ItemMagicCore, 1), 'e', Items.ender_pearl);
+
     //blocks
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousBlocks.BlockPedestal), " G ", " p ", "QQQ", 'G', "blockGlassColorless", 'Q', new ItemStack(Blocks.quartz_block, 1, 0), 'p', new ItemStack(Blocks.quartz_block, 1, 2)));
 
