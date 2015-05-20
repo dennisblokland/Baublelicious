@@ -14,6 +14,7 @@ public class BaubleliciousRecipe {
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemRing), " G ", "I I", " G ", 'G', "nuggetGold", 'I', "ingotIron"));
     GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.ItemBelt), " L ", "L L", " L ", 'L', Items.leather);
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemAmulet), " L ", "L L", " I ", 'L', Items.leather, 'I', "ingotIron"));
+    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.bindingGem), " r ", "ede", " 2 ", 'r', "dustRedstone", 'e', Items.ender_pearl, 'd', "gemDiamond", '2', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 1)));
 
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BaubleliciousItems.ItemAmuletGrowth), " A ", "BCB", " S ", 'A', BaubleliciousItems.ItemAmulet, 'S', "treeSapling", 'B', "dyeWhite", 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1, 2)));
     GameRegistry.addRecipe(new ItemStack(BaubleliciousItems.ItemBeltStepAssist), "LBL", " C ", "   ", 'L', Items.leather_boots, 'B', BaubleliciousItems.ItemBelt, 'C', new ItemStack(BaubleliciousItems.ItemMagicCore, 1));
