@@ -4,6 +4,7 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import com.baublelicious.helpers.NBTHelper;
 import com.baublelicious.items.BaubleliciousItems;
+import com.baublelicious.items.ItemEntangledBauble;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -11,6 +12,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
+
+import java.util.List;
 
 public class RecipeEntangledBauble implements IRecipe {
   public ItemStack entangledStack;
@@ -25,6 +28,8 @@ public class RecipeEntangledBauble implements IRecipe {
   public boolean matches(InventoryCrafting inventory, World world) {
     boolean foundEntangledBauble = false;
     boolean foundBauble = false;
+    ItemStack entangledBauble = null;
+    ItemStack targetBauble = null;
     for (int i = 0; i < inventory.getSizeInventory(); i++) {
       ItemStack stack = inventory.getStackInSlot(i);
       if (stack != null) {
@@ -33,16 +38,27 @@ public class RecipeEntangledBauble implements IRecipe {
             return false;
           }
           foundEntangledBauble = true;
+          entangledBauble = stack;
         } else if (stack.getItem() instanceof IBauble) {
           if (((IBauble) stack.getItem()).getBaubleType(stack) == baubleType) {
             if (foundBauble) {
               return false;
             }
             foundBauble = true;
+            targetBauble = stack;
           } else {
             return false;
           }
         } else {
+          return false;
+        }
+      }
+    }
+
+    if (foundBauble && foundEntangledBauble) {
+      List<ItemStack> baubles = ItemEntangledBauble.getBaublesFromStack(entangledBauble);
+      for (ItemStack bauble : baubles){
+        if (bauble.isItemEqual(targetBauble)) {
           return false;
         }
       }
@@ -55,7 +71,7 @@ public class RecipeEntangledBauble implements IRecipe {
     boolean foundEntangledBauble = false;
     boolean foundBauble = false;
     ItemStack result = null;
-    ItemStack bauble = null;
+    ItemStack targetBauble = null;
     for (int i = 0; i < inventory.getSizeInventory(); i++) {
       ItemStack stack = inventory.getStackInSlot(i);
       if (stack != null) {
@@ -71,11 +87,20 @@ public class RecipeEntangledBauble implements IRecipe {
               return null;
             }
             foundBauble = true;
-            bauble = stack.copy();
+            targetBauble = stack.copy();
           } else {
             return null;
           }
         } else {
+          return null;
+        }
+      }
+    }
+
+    if (foundBauble && foundEntangledBauble) {
+      List<ItemStack> baubles = ItemEntangledBauble.getBaublesFromStack(result);
+      for (ItemStack bauble : baubles){
+        if (bauble.isItemEqual(targetBauble)) {
           return null;
         }
       }
@@ -89,7 +114,7 @@ public class RecipeEntangledBauble implements IRecipe {
 
     NBTTagList itemsList = compound.getTagList("EntangledBaubles", Constants.NBT.TAG_COMPOUND);
     NBTTagCompound itemTag = new NBTTagCompound();
-    bauble.writeToNBT(itemTag);
+    targetBauble.writeToNBT(itemTag);
     itemsList.appendTag(itemTag);
     compound.setTag("EntangledBaubles", itemsList);
     return result;

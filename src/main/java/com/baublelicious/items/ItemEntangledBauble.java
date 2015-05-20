@@ -37,7 +37,7 @@ public abstract class ItemEntangledBauble extends ItemBauble {
     }
   }
 
-  public List<ItemStack> getBaublesFromStack(ItemStack stack) {
+  public static List<ItemStack> getBaublesFromStack(ItemStack stack) {
     List<ItemStack> baubles = new ArrayList<>();
     NBTTagCompound compound = NBTHelper.getItemStackCompound(stack);
     if (compound.hasKey("EntangledBaubles")) {
