@@ -37,19 +37,6 @@ public abstract class ItemEntangledBauble extends ItemBauble {
     }
   }
 
-  public static List<ItemStack> getBaublesFromStack(ItemStack stack) {
-    List<ItemStack> baubles = new ArrayList<>();
-    NBTTagCompound compound = NBTHelper.getItemStackCompound(stack);
-    if (compound.hasKey("EntangledBaubles")) {
-      NBTTagList baublesList = compound.getTagList("EntangledBaubles", Constants.NBT.TAG_COMPOUND);
-      for (int i = 0; i < baublesList.tagCount(); i++) {
-        NBTTagCompound itemTag = baublesList.getCompoundTagAt(i);
-        baubles.add(ItemStack.loadItemStackFromNBT(itemTag));
-      }
-    }
-    return baubles;
-  }
-
   @SuppressWarnings("unchecked")
   public void addInformationForBaubles(String empty, ItemStack stack, List lines) {
     List<ItemStack> baubles = getBaublesFromStack(stack);
@@ -65,5 +52,34 @@ public abstract class ItemEntangledBauble extends ItemBauble {
   @Override
   public boolean hasEffect(ItemStack stack, int pass) {
     return pass == 0 && getBaublesFromStack(stack).size() > 0;
+  }
+
+
+  public static List<ItemStack> getBaublesFromStack(ItemStack stack) {
+    List<ItemStack> baubles = new ArrayList<>();
+    NBTTagCompound compound = NBTHelper.getItemStackCompound(stack);
+    if (compound.hasKey("EntangledBaubles")) {
+      NBTTagList baublesList = compound.getTagList("EntangledBaubles", Constants.NBT.TAG_COMPOUND);
+      for (int i = 0; i < baublesList.tagCount(); i++) {
+        NBTTagCompound itemTag = baublesList.getCompoundTagAt(i);
+        baubles.add(ItemStack.loadItemStackFromNBT(itemTag));
+      }
+    }
+    return baubles;
+  }
+
+  public static boolean containsBauble(ItemStack stack, IBauble bauble) {
+    NBTTagCompound compound = NBTHelper.getItemStackCompound(stack);
+    if (compound.hasKey("EntangledBaubles")) {
+      NBTTagList baublesList = compound.getTagList("EntangledBaubles", Constants.NBT.TAG_COMPOUND);
+      for (int i = 0; i < baublesList.tagCount(); i++) {
+        NBTTagCompound itemTag = baublesList.getCompoundTagAt(i);
+        if (ItemStack.loadItemStackFromNBT(itemTag).getItem() == bauble) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 }

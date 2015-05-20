@@ -55,9 +55,11 @@ public class ItemSpeedBelt extends ItemBaubles {
       EntityPlayer player = (EntityPlayer) event.entityLiving;
       ItemStack belt = PlayerHandler.getPlayerBaubles(player).getStackInSlot(3);
 
-      if (belt != null && belt.getItem() == this) {
-        player.motionY += jump;
-        player.fallDistance = -fallBuffer;
+      if (belt != null) {
+        if (belt.getItem() == this || (belt.getItem() == BaubleliciousItems.entangledBelt && ItemEntangledBauble.containsBauble(belt, this))) {
+          player.motionY += jump;
+          player.fallDistance = -fallBuffer;
+        }
       }
     }
   }
