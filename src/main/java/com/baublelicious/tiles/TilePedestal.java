@@ -96,7 +96,7 @@ public class TilePedestal extends TileEntity implements IInventory {
 
   private void deactivateBauble(EntityPlayer player) {
     isActive = false;
-    cachedPlayer = null;
+    cachedPlayer = new WeakReference<>(null);
     ((IBauble) cachedBauble.getItem()).onUnequipped(cachedBauble, player);
     cachedBauble = null;
   }
