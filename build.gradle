@@ -30,7 +30,7 @@ repositories {
 apply plugin: "idea"
 apply plugin: "forge"
 
-version = "1.7.10-1.0.7"
+version = "1.7.10-1.1.0-beta1"
 group= "com.baublelicious"
 archivesBaseName = "baublelicious"
 
