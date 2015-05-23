@@ -17,10 +17,10 @@ buildscript {
 }
 
 repositories {
-    maven { // Waila
-        name "Mobius"
-        url "http://mobiusstrip.eu/maven"
-    }
+//    maven { // Waila
+//        name "Mobius"
+//        url "http://mobiusstrip.eu/maven"
+//    }
     maven { // NEI/CCC
         name "Chickenbones"
         url "http://chickenbones.net/maven/"
@@ -29,6 +29,11 @@ repositories {
 
 apply plugin: "idea"
 apply plugin: "forge"
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = "1.7"
+    targetCompatibility = "1.7"
+}
 
 version = "1.7.10-1.1.0-beta1"
 group= "com.baublelicious"
@@ -47,7 +52,7 @@ dependencies {
     compile "codechicken:CodeChickenLib:1.7.10-1.1.3.136:dev"
     compile "codechicken:CodeChickenCore:1.7.10-1.0.6.43:dev"
     compile "codechicken:NotEnoughItems:1.7.10-1.0.4.107:dev"
-    compile "mcp.mobius.waila:Waila:1.5.10:dev"
+//    compile "mcp.mobius.waila:Waila:1.5.10:dev"
 }
 
 processResources {
