@@ -47,6 +47,16 @@ public class ItemFlyingRing extends ItemBaubles implements IBauble {
       player.sendPlayerAbilities();
     }
   }
+
+  @Override
+  public void onWornTick(ItemStack stack, EntityLivingBase entity) {
+    if (entity instanceof EntityPlayer) {
+      EntityPlayer player = ((EntityPlayer) entity);
+      if (!player.capabilities.allowFlying) {
+        startFlying(player);
+      }
+    }
+  }
 }
 
 		
