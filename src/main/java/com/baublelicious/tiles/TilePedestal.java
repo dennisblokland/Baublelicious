@@ -249,9 +249,13 @@ public class TilePedestal extends TileEntity implements IInventory {
   //Used to be onInventoryChanged
   public void markDirty() {
     super.markDirty();
+    makeItemEntity();
+  }
+
+  private void makeItemEntity() {
     if (hasWorldObj() && worldObj.isRemote) {
-      if (contents[0] != null) {
-        itemEntity = new EntityItem(this.worldObj, this.xCoord, this.yCoord, this.zCoord, contents[0]);
+      if (getStackInSlot(0) != null) {
+        itemEntity = new EntityItem(this.worldObj, this.xCoord, this.yCoord, this.zCoord, getStackInSlot(0));
         itemEntity.hoverStart = 0;
         itemEntity.rotationYaw = 0;
         itemEntity.motionX = 0;
@@ -273,7 +277,7 @@ public class TilePedestal extends TileEntity implements IInventory {
   @Override
   public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
     readItemsFromNBT(packet.func_148857_g());
-    markDirty();
+    makeItemEntity();
   }
 }
 
