@@ -1,6 +1,7 @@
 package com.baublelicious.items;
 
 import baubles.api.BaubleType;
+import com.baublelicious.helpers.Vector3d;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -8,7 +9,6 @@ import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import org.lwjgl.util.vector.Vector3f;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class ItemMagnetRing extends ItemBauble {
   }
 
   public void suckEntityToPlayer(Entity entity, EntityPlayer player) {
-    moveEntityTo(entity, new Vector3f((float) player.posX, (float) (player.posY - (player.worldObj.isRemote ? 1.62D : 0.0D) + 0.75D), (float) player.posZ), 0.45f);
+    moveEntityTo(entity, new Vector3d((float) player.posX, (float) (player.posY - (player.worldObj.isRemote ? 1.62D : 0.0D) + 0.75D), (float) player.posZ), 0.45f);
 
     if (player.worldObj.rand.nextInt(200) == 0) {
       float pitch = 0.85f - player.worldObj.rand.nextFloat() * 3f / 10f;
@@ -54,10 +54,10 @@ public class ItemMagnetRing extends ItemBauble {
     }
   }
 
-  public void moveEntityTo(Entity entity, Vector3f position, double speed) {
-    Vector3f entityPos = new Vector3f((float) entity.posX, (float) (entity.posY - entity.yOffset + entity.height / 2f), (float) entity.posZ);
-    Vector3f motionVector = Vector3f.sub(position, entityPos, null);
-    if (motionVector.length() > 1.0D) {
+  public void moveEntityTo(Entity entity, Vector3d position, double speed) {
+    Vector3d entityPos = new Vector3d(entity.posX, entity.posY - entity.yOffset + entity.height / 2f, entity.posZ);
+    Vector3d motionVector = position.sub(entityPos);
+    if (motionVector.magnitude() > 1.0D) {
       motionVector.normalise();
     }
 
