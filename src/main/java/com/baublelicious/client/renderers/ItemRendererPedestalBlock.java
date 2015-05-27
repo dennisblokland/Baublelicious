@@ -1,6 +1,7 @@
-package com.baublelicious.renderer;
+package com.baublelicious.client.renderers;
 
-import cpw.mods.fml.client.FMLClientHandler;
+import com.baublelicious.client.models.PedestalModel;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -28,7 +29,7 @@ public class ItemRendererPedestalBlock implements IItemRenderer {
   public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
     GL11.glPushMatrix();
     ResourceLocation texture = new ResourceLocation("baublelicious:textures/models/TileentityPedistal.png");
-    FMLClientHandler.instance().getClient().renderEngine.bindTexture(texture);
+    Minecraft.getMinecraft().renderEngine.bindTexture(texture);
     GL11.glPushMatrix();
     GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
     GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
@@ -36,8 +37,5 @@ public class ItemRendererPedestalBlock implements IItemRenderer {
     this.model.render((Entity) null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
     GL11.glPopMatrix();
     GL11.glPopMatrix();
-
   }
-
-
 }

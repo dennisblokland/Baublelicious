@@ -2,7 +2,6 @@ package com.baublelicious;
 
 import com.baublelicious.network.NetworkRegister;
 import com.baublelicious.items.BaubleliciousItems;
-import com.baublelicious.network.CommonProxy;
 import com.baublelicious.network.GuiHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -11,7 +10,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +19,7 @@ public class Baublelicious {
   @Instance(ModInfo.MOD_ID)
   public static Baublelicious instance;
 
-  @SidedProxy(clientSide = "com.baublelicious.network.ClientProxy", serverSide = "com.baublelicious.network.CommonProxy")
+  @SidedProxy(clientSide = "com.baublelicious.client.ClientProxy", serverSide = "com.baublelicious.CommonProxy")
   public static CommonProxy proxy;
 
   public static CreativeTabs tabBaublelicious = new CreativeTabs("Baublelicious") {

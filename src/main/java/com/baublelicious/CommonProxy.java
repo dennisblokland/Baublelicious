@@ -1,4 +1,4 @@
-package com.baublelicious.network;
+package com.baublelicious;
 
 import com.baublelicious.blocks.BaubleliciousBlocks;
 import com.baublelicious.items.BaubleliciousItems;

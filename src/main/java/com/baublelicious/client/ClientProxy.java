@@ -1,10 +1,11 @@
-package com.baublelicious.network;
+package com.baublelicious.client;
 
+import com.baublelicious.CommonProxy;
 import com.baublelicious.blocks.BaubleliciousBlocks;
-import com.baublelicious.tiles.TilePedestal;
+import com.baublelicious.client.renderers.ItemRendererPedestalBlock;
+import com.baublelicious.client.renderers.PedestalRenderer;
 import com.baublelicious.handler.KeyHandler;
-import com.baublelicious.renderer.ItemRendererPedestalBlock;
-import com.baublelicious.renderer.PedestalRenderer;
+import com.baublelicious.tiles.TilePedestal;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.client.Minecraft;

@@ -1,7 +1,7 @@
-package com.baublelicious.renderer;
+package com.baublelicious.client.renderers;
 
+import com.baublelicious.client.models.PedestalModel;
 import com.baublelicious.tiles.TilePedestal;
-import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
