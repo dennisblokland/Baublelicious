@@ -273,6 +273,7 @@ public class TilePedestal extends TileEntity implements IInventory {
   @Override
   public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
     readItemsFromNBT(packet.func_148857_g());
+    markDirty();
   }
 }
 
