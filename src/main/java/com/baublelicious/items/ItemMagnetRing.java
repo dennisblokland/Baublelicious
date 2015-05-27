@@ -1,29 +1,23 @@
 package com.baublelicious.items;
 
 import baubles.api.BaubleType;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
+import org.lwjgl.util.vector.Vector3f;
 
 import java.util.List;
 
-public class ItemMagnetRing extends ItemBaubles {
-  private final float fudgeFactor = 0.0f;
-  private float rangeBase;
+public class ItemMagnetRing extends ItemBauble {
+  public static final float RANGE = 10f;
 
-  public ItemMagnetRing() {
-    this.rangeBase = 7f;
-
-
-    setUnlocalizedName("ItemMagnetRing");
+  public ItemMagnetRing(String key) {
+    super(key);
   }
-
 
   @Override
   public BaubleType getBaubleType(ItemStack arg0) {
@@ -33,82 +27,43 @@ public class ItemMagnetRing extends ItemBaubles {
   @SuppressWarnings("unchecked")
   @Override
   public void onWornTick(ItemStack stack, EntityLivingBase entity) {
-    {
-      EntityPlayer player = (EntityPlayer) entity;
-      World world = entity.worldObj;
+    EntityPlayer player = (EntityPlayer) entity;
 
+    AxisAlignedBB bounds = player.boundingBox.expand(RANGE, RANGE, RANGE);
 
-      int dragCount = player.getCommandSenderName().hashCode();
-      float radius = rangeBase;
-      AxisAlignedBB bounds = player.boundingBox.expand(radius, radius, radius);
+    List<EntityItem> itemEntities = player.worldObj.getEntitiesWithinAABB(EntityItem.class, bounds);
+    List<EntityXPOrb> xpEntities = player.worldObj.getEntitiesWithinAABB(EntityXPOrb.class, bounds);
 
-      if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
-        bounds.expand(fudgeFactor, fudgeFactor, fudgeFactor);
-
-        List<EntityItem> list = world.getEntitiesWithinAABB(EntityItem.class, bounds);
-        List<EntityXPOrb> listXP = world.getEntitiesWithinAABB(EntityXPOrb.class, bounds);
-
-        for (EntityItem e : list) {
-          if (e.delayBeforeCanPickup == 0) {
-            double x = entity.posX - e.posX;
-            double y = entity.posY - e.posY;
-            double z = entity.posZ - e.posZ;
-
-            double length = Math.sqrt(x * x + y * y + z * z) * 2;
-
-            x = x / length + entity.motionX / 2;
-            y = y / length + entity.motionY / 2;
-            z = z / length + entity.motionZ / 2;
-
-            e.motionX = +x;
-            e.motionY = +y;
-            e.motionZ = +z;
-            e.isAirBorne = true;
-
-            if (e.isCollidedHorizontally) {
-              e.motionY += 1;
-            }
-
-            if (world.rand.nextInt(200) == 0) {
-              float pitch = 0.85f - world.rand.nextFloat() * 3f / 10f;
-              world.playSoundEffect(e.posX, e.posY, e.posZ, "mob.endermen.portal", 0.6f, pitch);
-            }
-
-          }
-        }
-        for (EntityXPOrb XP : listXP) {
-
-          {
-            double x = entity.posX - XP.posX;
-            double y = entity.posY - XP.posY;
-            double z = entity.posZ - XP.posZ;
-
-            double length = Math.sqrt(x * x + y * y + z * z) * 2;
-
-            x = x / length + entity.motionX / 2;
-            y = y / length + entity.motionY / 2;
-            z = z / length + entity.motionZ / 2;
-
-            XP.motionX = +x;
-            XP.motionY = +y;
-            XP.motionZ = +z;
-            XP.isAirBorne = true;
-
-            if (XP.isCollidedHorizontally) {
-              XP.motionY += 1;
-            }
-
-            if (world.rand.nextInt(200) == 0) {
-              float pitch = 0.85f - world.rand.nextFloat() * 3f / 10f;
-              world.playSoundEffect(XP.posX, XP.posY, XP.posZ, "mob.endermen.portal", 0.6f, pitch);
-            }
-          }
-
-        }
-
+    for (EntityItem entityItem : itemEntities) {
+      if (entityItem.age >= 30) {
+        suckEntityToPlayer(entityItem, player);
       }
     }
 
+    for (EntityXPOrb entityXP : xpEntities) {
+      suckEntityToPlayer(entityXP, player);
+    }
+  }
+
+  public void suckEntityToPlayer(Entity entity, EntityPlayer player) {
+    moveEntityTo(entity, new Vector3f((float) player.posX, (float) (player.posY - (player.worldObj.isRemote ? 1.62D : 0.0D) + 0.75D), (float) player.posZ), 0.45f);
+
+    if (player.worldObj.rand.nextInt(200) == 0) {
+      float pitch = 0.85f - player.worldObj.rand.nextFloat() * 3f / 10f;
+      player.worldObj.playSoundEffect(entity.posX, entity.posY, entity.posZ, "mob.endermen.portal", 0.6f, pitch);
+    }
+  }
+
+  public void moveEntityTo(Entity entity, Vector3f position, double speed) {
+    Vector3f entityPos = new Vector3f((float) entity.posX, (float) (entity.posY - entity.yOffset + entity.height / 2f), (float) entity.posZ);
+    Vector3f motionVector = Vector3f.sub(position, entityPos, null);
+    if (motionVector.length() > 1.0D) {
+      motionVector.normalise();
+    }
+
+    entity.motionX = motionVector.x * speed;
+    entity.motionY = motionVector.y * speed;
+    entity.motionZ = motionVector.z * speed;
   }
 }
 

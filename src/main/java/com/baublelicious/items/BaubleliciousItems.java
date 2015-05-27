@@ -10,6 +10,7 @@ public class BaubleliciousItems {
   public static final String ENTANGLED_AMULET_KEY = "entangledAmulet";
   public static final String ENTANGLED_RING_KEY = "entangledRing";
   public static final String ENTANGLED_BELT_KEY = "entangledBelt";
+  public static final String MAGNET_RING_KEY = "ItemMagnetRing";
 
   public static Baublelicious instance;
   public static Item ItemBeltStepAssist;
@@ -21,7 +22,7 @@ public class BaubleliciousItems {
   public static Item ItemRing;
   public static Item ItemAmulet;
   public static Item ItemFallingBelt;
-  public static Item ItemMagnetRing;
+  public static Item magnetRing;
   public static Item ItemAmuletGrowth;
   public static Item ItemMagicCore;
   public static Item ItemsAmuletNightvision;
@@ -39,7 +40,7 @@ public class BaubleliciousItems {
     ItemFlyingRing = new ItemFlyingRing();
     ItemSpeedBelt = new ItemSpeedBelt();
     ItemFallingBelt = new ItemFallingBelt();
-    ItemMagnetRing = new ItemMagnetRing();
+    magnetRing = new ItemMagnetRing(ModInfo.MOD_ID + ":" + MAGNET_RING_KEY);
     ItemAmuletGrowth = new ItemAmuletGrowth();
     ItemMagicCore = new ItemMagicCore();
     ItemsAmuletNightvision = new ItemsAmuletNightvision();
@@ -51,6 +52,8 @@ public class BaubleliciousItems {
 
     GameRegistry.registerItem(ItemMagicCore, "ItemMagicCore");
     GameRegistry.registerItem(bindingGem, BINDING_GEM_KEY);
+
+    GameRegistry.registerItem(magnetRing, MAGNET_RING_KEY);
 
     GameRegistry.registerItem(entangledAmulet, ENTANGLED_AMULET_KEY);
     GameRegistry.registerItem(entangledRing, ENTANGLED_RING_KEY);
