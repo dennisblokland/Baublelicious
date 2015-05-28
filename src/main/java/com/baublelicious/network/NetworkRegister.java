@@ -1,7 +1,9 @@
 package com.baublelicious.network;
 
 import com.baublelicious.ModInfo;
+import com.baublelicious.network.handlers.HandlerBlacklistAdd;
 import com.baublelicious.network.handlers.HandlerToggleGrowthAmulet;
+import com.baublelicious.network.messages.MessageBlacklistAdd;
 import com.baublelicious.network.messages.MessageToggleGrowthAmulet;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -13,5 +15,6 @@ public class NetworkRegister {
   public static void registerMessages() {
     // Server Side Handler
     wrapper.registerMessage(HandlerToggleGrowthAmulet.class, MessageToggleGrowthAmulet.class, 100, Side.SERVER);
+    wrapper.registerMessage(HandlerBlacklistAdd.class, MessageBlacklistAdd.class, 101, Side.SERVER);
   }
 }
