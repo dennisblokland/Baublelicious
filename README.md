@@ -26,8 +26,11 @@ Amulet Of Diving: lets you breathe underwater
  
 # Installation
 Backup your world!
+
 Install Minecraft Forge
+
 Install Baubles
+
 Download and drop the Baublelicious.jar file into your ".minecraft/mods" folder. 
  
 
