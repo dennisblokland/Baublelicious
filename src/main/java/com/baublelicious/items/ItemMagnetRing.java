@@ -2,10 +2,9 @@ package com.baublelicious.items;
 
 import baubles.api.BaubleType;
 import com.baublelicious.Baublelicious;
+import com.baublelicious.config.Config;
 import com.baublelicious.helpers.NBTHelper;
 import com.baublelicious.helpers.Vector3d;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -84,7 +83,7 @@ public class ItemMagnetRing extends ItemBauble {
   public void suckEntityToPlayer(Entity entity, EntityPlayer player) {
     moveEntityTo(entity, new Vector3d((float) player.posX, (float) (player.posY - (player.worldObj.isRemote ? 1.62D : 0.0D) + 0.75D), (float) player.posZ), 0.45f);
 
-    if (player.worldObj.rand.nextInt(200) == 0) {
+    if (player.worldObj.isRemote && Config.soundEffectChance > 0 && player.worldObj.rand.nextInt(Config.soundEffectChance) == 0) {
       float pitch = 0.85f - player.worldObj.rand.nextFloat() * 3f / 10f;
       player.worldObj.playSoundEffect(entity.posX, entity.posY, entity.posZ, "mob.endermen.portal", 0.6f, pitch);
     }

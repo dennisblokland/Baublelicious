@@ -27,3 +27,6 @@ item.ItemsAmuletNightvision.name=Amulet of Nightvision
 
 #BLOCKS
 tile.BlockPedestal.name=Pedestal
+
+#CONFIG
+baublelicous.config.magnetSoundChance=Magnet Sound Chance
