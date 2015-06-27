@@ -7,7 +7,7 @@ Ring Of Flight:Lets you fly like creative.
 
 Speed Belt:makes you run and fly faster.
 
-Amulet Of Growth:speeds up the growth of any plant ingame.
+Amulet Of Growth:speeds up the growth of any plant ingame.(by default activated with G)
 
 Belt Of Hiking:Gives you step assist.
 
@@ -15,14 +15,27 @@ Belt Of Water Walking:lets you walk on water.
 
 Amulet Of Diving:lets you breath under water.
 
-Ring Of Strenght:Give you strenght.
-
-Magnet Ring:pulls items and xp to you.
+Magnet Ring:pulls nearby items and xp to you.
 
 Falling Belt:removes fall damage.
 
-Amulet Of Diving: lets you breathe underwater
+Amulet Of Diving: lets you breathe underwater.
 
+Amulet Of Nightvision: gives you nightvision.
+
+ 
+
+Entangled ring/belt/amulet:lets you have multiple baubles in the same slot.(add baubles in crafting table)
+
+ 
+
+# Other Items/blocks:
+
+Pedistal:in the Pedestal you can put baubles. and within a range of 32 blocks it wil give you the effect of the bauble.
+
+binding gem: Used in the Pedestal to bind the effect to a player.
+
+Magic cores: Crafting item in diffent tiers
  
 # Installation
 Backup your world!
