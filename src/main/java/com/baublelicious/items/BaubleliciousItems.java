@@ -27,6 +27,7 @@ public class BaubleliciousItems {
   public static Item ItemMagicCore;
   public static Item ItemsAmuletNightvision;
   public static Item bindingGem;
+  public static Item ItemAmuletFieryCore;
   public static Item entangledAmulet, entangledRing, entangledBelt;
 
   public static void init() {
@@ -44,7 +45,8 @@ public class BaubleliciousItems {
     ItemAmuletGrowth = new ItemAmuletGrowth();
     ItemMagicCore = new ItemMagicCore();
     ItemsAmuletNightvision = new ItemsAmuletNightvision();
-
+    ItemAmuletFieryCore = new ItemAmuletFieryCore();
+    
     entangledAmulet = new ItemEntangledAmulet(ModInfo.MOD_ID + ":" + ENTANGLED_AMULET_KEY);
     entangledRing = new ItemEntangledRing(ModInfo.MOD_ID + ":" + ENTANGLED_RING_KEY);
     entangledBelt = new ItemEntangledBelt(ModInfo.MOD_ID + ":" + ENTANGLED_BELT_KEY);

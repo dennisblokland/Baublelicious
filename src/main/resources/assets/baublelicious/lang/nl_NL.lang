@@ -20,10 +20,11 @@ item.ItemSpeedBelt.name=Snelheids Riem
 item.baublelicious:ItemMagnetRing.name=Magneet Ring
 item.ItemFallingBelt.name=Val Ring
 item.ItemAmuletGrowth.name=Amulet Van De Groei
-item.ItemMagicCore.tier1.name=magische kern
-item.ItemMagicCore.tier2.name=magische kern
-item.ItemMagicCore.tier3.name=magische kern
+item.ItemMagicCore.tier1.name=Magische kern
+item.ItemMagicCore.tier2.name=Magische kern
+item.ItemMagicCore.tier3.name=Magische kern
 item.ItemsAmuletNightvision.name=Amulet van NachtVisie
+item.ItemAmuletFieryCore.name=Amulet van de Vurige Kern
 
 #BLOCKS
 tile.BlockPedestal.name=Pedestal
