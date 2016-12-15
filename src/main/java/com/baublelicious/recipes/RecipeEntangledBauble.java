@@ -4,6 +4,7 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import com.baublelicious.helpers.NBTHelper;
 import com.baublelicious.items.BaubleliciousItems;
+import com.baublelicious.items.ItemAmuletGrowth;
 import com.baublelicious.items.ItemEntangledBauble;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -94,6 +95,9 @@ public class RecipeEntangledBauble implements IRecipe {
         } else {
           return null;
         }
+        if(stack.getItem().isDamageable()){
+        	return null;
+        }
       }
     }
 
@@ -103,6 +107,7 @@ public class RecipeEntangledBauble implements IRecipe {
         if (bauble.isItemEqual(targetBauble)) {
           return null;
         }
+
       }
     }
 
