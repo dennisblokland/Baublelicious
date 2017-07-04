@@ -1,0 +1,16 @@
+[
+{
+  "modid": "baublelicious",
+  "name": "Baublelicious",
+  "description": "Expansion for Baubles",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://minecraft.curseforge.com/mc-mods/223951-baublelicious",
+  "updateUrl": "",
+  "authorList": ["DenBukki", "UnwrittenFun", "sjembek98"],
+  "credits": "Azanor for making baubles",
+  "logoFile": "BLLogo.png",
+  "screenshots": [],
+  "dependencies": [baubles]
+}
+]
