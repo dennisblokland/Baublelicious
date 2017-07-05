@@ -3,6 +3,7 @@ package com.baublelicious;
 import com.baublelicious.client.ClientProxy;
 import com.baublelicious.items.BaubleliciousItems;
 
+import com.baublelicious.recipes.BaubleliciousRecipe;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
@@ -30,6 +31,8 @@ public class Baublelicious
     public void preInit(FMLPreInitializationEvent e) {
         BaubleliciousItems.init();
         proxy.registerModels();
+        BaubleliciousRecipe.init();
+
     }
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
