@@ -1,7 +1,10 @@
 package com.baublelicious;
 
+import com.baublelicious.client.ClientProxy;
 import com.baublelicious.items.BaubleliciousItems;
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -26,6 +29,7 @@ public class Baublelicious
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         BaubleliciousItems.init();
+        proxy.registerModels();
     }
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {

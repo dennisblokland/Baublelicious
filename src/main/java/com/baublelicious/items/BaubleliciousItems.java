@@ -9,20 +9,30 @@ import net.minecraft.util.ResourceLocation;
 
 public class BaubleliciousItems {
 
+    //normal items
+    public static Item ItemMagicCore;
 
-    public static ItemRing ItemRing;
-    public static ItemAmulet ItemAmulet;
-    public static ItemBelt ItemBelt;
-    public static ItemSpeedBelt ItemSpeedBelt;
-    public static ItemGrowthPendant ItemGrowthPendant;
-    public static ItemRingOfFlight ItemRingOfFlight;
-    public static ItemBeltWaterWalking ItemBeltWaterWalking;
-    public static ItemDivingAmulet ItemDivingAmulet;
-    public static ItemFallingBelt ItemFallingBelt;
-    public static ItemAmuletNightvision ItemAmuletNightvision;
-    public static  ItemAmuletFieryCore ItemAmuletFieryCore;
+    //bauble items
+    public static Item ItemRing;
+    public static Item ItemAmulet;
+    public static Item ItemBelt;
+    public static Item ItemSpeedBelt;
+    public static Item ItemGrowthPendant;
+    public static Item ItemRingOfFlight;
+    public static Item ItemBeltWaterWalking;
+    public static Item ItemDivingAmulet;
+    public static Item ItemFallingBelt;
+    public static Item ItemAmuletNightvision;
+    public static Item ItemAmuletFieryCore;
 
     public static void init() {
+
+
+        ItemMagicCore = new ItemMagicCore();
+        ItemMagicCore.setRegistryName(new ResourceLocation(ModInfo.MOD_ID, ItemMagicCore.getUnlocalizedName()));
+        GameRegistry.register(ItemMagicCore);
+
+
         ItemRing = register(new ItemRing(), "ItemRing");
         ItemAmulet = register(new ItemAmulet(), "ItemAmulet");
         ItemBelt = register(new ItemBelt(), "ItemBelt");
