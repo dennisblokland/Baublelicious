@@ -21,7 +21,8 @@ public class ItemAmuletNightvision extends BaubleliciousBaublesItem{
     @Override
     public void onWornTick(ItemStack stack, EntityLivingBase entity) {
         PotionEffect effect = entity.getActivePotionEffect(Potion.getPotionById(16));
-        if (effect == null || effect.getDuration() < 900) entity.addPotionEffect(new PotionEffect(Potion.getPotionById(16), 999999, 0));
+        if (effect == null || effect.getDuration() < 900) entity.addPotionEffect(new PotionEffect(Potion.getPotionById(16), 999999, 0, false, false));
+
     }
 
     @Override
