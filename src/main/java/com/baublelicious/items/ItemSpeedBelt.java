@@ -25,7 +25,7 @@ public class ItemSpeedBelt extends BaubleliciousBaublesItem {
     final float fallBuffer;
 
     public ItemSpeedBelt() {
-        this("ItemSpeedBelt", 0.035F, 0.2F, 2F);
+        this("ItemSpeedBelt",  0.035F, 0.2F, 2F);
         this.setUnlocalizedName("ItemSpeedBelt");
         setRegistryName("ItemSpeedBelt");
     }
@@ -49,11 +49,8 @@ public class ItemSpeedBelt extends BaubleliciousBaublesItem {
 
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
-            if ((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F && !player.isInWater()) {
-               // player.moveFlying(0F, 1F, player.capabilities.isFlying ? speed : speed * 2);
-           //     player.moveRelative(0F, 1F, player.capabilities.isFlying ? speed : speed);
-
-
+            if((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F && !player.isInsideOfMaterial(Material.WATER)) {
+                player.moveRelative(0F, 0F, 1F, speed );
                 player.stepHeight = 1F;
             } else {
                 player.stepHeight = 0.5F;
