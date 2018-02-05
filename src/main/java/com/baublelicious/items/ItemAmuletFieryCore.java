@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 public class ItemAmuletFieryCore  extends BaubleliciousBaublesItem{
     public ItemAmuletFieryCore(){
         this.setUnlocalizedName("ItemAmuletFieryCore");
+        setRegistryName("ItemAmuletFieryCore");
         setMaxDamage(2002);
     }
     public static final String[] IS_IMMUNE_TO_FIRE = new String[] { "isImmuneToFire", "field_70178_ae", "ag" };

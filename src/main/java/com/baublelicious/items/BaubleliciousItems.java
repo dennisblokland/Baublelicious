@@ -1,5 +1,6 @@
 package com.baublelicious.items;
-
+import net.minecraftforge.registries.IForgeRegistry;
+import com.baublelicious.Baublelicious;
 import com.baublelicious.ModInfo;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -10,55 +11,54 @@ import net.minecraft.util.ResourceLocation;
 public class BaubleliciousItems {
 
     //normal items
-    public static Item ItemMagicCore;
+    public static Item ItemMagicCore = new ItemMagicCore();;
 
     //bauble items
-    public static Item ItemRing;
-    public static Item ItemAmulet;
-    public static Item ItemBelt;
-    public static Item ItemSpeedBelt;
-    public static Item ItemGrowthPendant;
-    public static Item ItemRingOfFlight;
-    public static Item ItemBeltWaterWalking;
-    public static Item ItemDivingAmulet;
-    public static Item ItemFallingBelt;
-    public static Item ItemAmuletNightvision;
-    public static Item ItemAmuletFieryCore;
+    public static Item ItemRing = new ItemRing();
+    public static Item ItemAmulet = new ItemAmulet();
+    public static Item ItemBelt = new ItemBelt();
+    public static Item ItemSpeedBelt = new ItemSpeedBelt();
+    public static Item ItemGrowthPendant = new ItemGrowthPendant();
+    public static Item ItemRingOfFlight = new ItemRingOfFlight();
+    public static Item ItemBeltWaterWalking =  new ItemBeltWaterWalking();
+    public static Item ItemDivingAmulet = new ItemDivingAmulet();
+    public static Item ItemFallingBelt = new ItemFallingBelt();
+    public static Item ItemAmuletNightvision =  new ItemAmuletNightvision();
+    public static Item ItemAmuletFieryCore = new ItemAmuletFieryCore();
 
-    public static void init() {
-
-
-        ItemMagicCore = new ItemMagicCore();
+    public static void register(IForgeRegistry<Item> registry) {
         ItemMagicCore.setRegistryName(new ResourceLocation(ModInfo.MOD_ID, ItemMagicCore.getUnlocalizedName()));
-        GameRegistry.register(ItemMagicCore);
+        registry.registerAll(
+                ItemRing,
+                ItemAmulet,
+                ItemBelt,
+                ItemSpeedBelt,
+                ItemGrowthPendant,
+                ItemRingOfFlight,
+                ItemBeltWaterWalking,
+                ItemDivingAmulet,
+                ItemFallingBelt,
+                ItemAmuletNightvision,
+                ItemAmuletFieryCore,
+                ItemMagicCore
+        );
+        ((BaubleliciousBaublesItem)ItemRing).registerItemModel(ItemRing);
+        ((BaubleliciousBaublesItem)ItemAmulet).registerItemModel(ItemAmulet);
+        ((BaubleliciousBaublesItem)ItemBelt).registerItemModel(ItemBelt);
+        ((BaubleliciousBaublesItem)ItemSpeedBelt).registerItemModel(ItemSpeedBelt);
+        ((BaubleliciousBaublesItem)ItemGrowthPendant).registerItemModel(ItemGrowthPendant);
+        ((BaubleliciousBaublesItem)ItemRingOfFlight).registerItemModel(ItemRingOfFlight);
+        ((BaubleliciousBaublesItem)ItemBeltWaterWalking).registerItemModel(ItemBeltWaterWalking);
+        ((BaubleliciousBaublesItem)ItemDivingAmulet).registerItemModel(ItemDivingAmulet);
+        ((BaubleliciousBaublesItem)ItemFallingBelt).registerItemModel(ItemFallingBelt);
+        ((BaubleliciousBaublesItem)ItemAmuletNightvision).registerItemModel(ItemAmuletNightvision);
+        ((BaubleliciousBaublesItem)ItemAmuletFieryCore).registerItemModel(ItemAmuletFieryCore);
+        //basic items
+        ((BaubleliciousBasicItem)ItemMagicCore).registerItemModel(ItemMagicCore);
 
-
-        ItemRing = register(new ItemRing(), "ItemRing");
-        ItemAmulet = register(new ItemAmulet(), "ItemAmulet");
-        ItemBelt = register(new ItemBelt(), "ItemBelt");
-        ItemSpeedBelt = register(new ItemSpeedBelt(), "ItemSpeedBelt");
-        ItemGrowthPendant = register(new ItemGrowthPendant(), "ItemGrowthPendant");
-        ItemRingOfFlight = register(new ItemRingOfFlight(), "ItemRingOfFlight");
-        ItemBeltWaterWalking = register(new ItemBeltWaterWalking(), "ItemBeltWaterWalking");
-        ItemDivingAmulet = register(new ItemDivingAmulet(), "ItemDivingAmulet");
-        ItemFallingBelt = register(new ItemFallingBelt(), "ItemFallingBelt");
-        ItemAmuletNightvision = register(new ItemAmuletNightvision(), "ItemAmuletNightvision");
-        ItemAmuletFieryCore = register(new ItemAmuletFieryCore(), "ItemAmuletFieryCore");
     }
 
-    private static <T extends Item> T register(T item, String name) {
-        item.setRegistryName(new ResourceLocation(ModInfo.MOD_ID, name));
-        GameRegistry.register(item);
 
-        if (item instanceof BaubleliciousBasicItem) {
-            ((BaubleliciousBasicItem)item).registerItemModel(item);
-        }
-        if (item instanceof BaubleliciousBaublesItem) {
-            ((BaubleliciousBaublesItem)item).registerItemModel(item);
-        }
-
-        return item;
-    }
 
 
 }

@@ -26,7 +26,7 @@ public class ItemGrowthPendant extends BaubleliciousBaublesItem {
     private int tickDelay = 100;
     public ItemGrowthPendant() {
         this.setUnlocalizedName("ItemGrowthPendant");
-
+        setRegistryName("ItemGrowthPendant");
         setMaxDamage(365);
 
         //this.canRepair = true;

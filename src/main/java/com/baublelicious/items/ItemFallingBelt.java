@@ -10,6 +10,7 @@ public class ItemFallingBelt extends BaubleliciousBaublesItem {
     public ItemFallingBelt() {
         setMaxDamage(1000);
         setUnlocalizedName("ItemFallingBelt");
+        setRegistryName("ItemFallingBelt");
     }
 
     @Override

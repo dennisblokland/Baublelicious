@@ -11,6 +11,7 @@ public class ItemAmuletNightvision extends BaubleliciousBaublesItem{
 
     public ItemAmuletNightvision() {
         setUnlocalizedName("ItemAmuletNightvision");
+        setRegistryName("ItemAmuletNightvision");
     }
 
     @Override

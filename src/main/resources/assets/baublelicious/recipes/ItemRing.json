@@ -1,0 +1,20 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "I I",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:gold_nugget"
+        },
+        "I": {
+            "item": "minecraft:iron_nugget"
+        }
+    },
+    "result": {
+        "item": "baublelicious:ItemRing",
+        "data": 0
+    }
+}

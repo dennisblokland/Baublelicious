@@ -16,6 +16,7 @@ public class ItemBeltWaterWalking extends BaubleliciousBaublesItem {
     public ItemBeltWaterWalking() {
         super();
         setUnlocalizedName("ItemBeltWaterWalking");
+        setRegistryName("ItemBeltWaterWalking");
 
     }
     @Override

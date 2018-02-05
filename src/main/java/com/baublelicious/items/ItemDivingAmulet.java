@@ -16,6 +16,7 @@ public class ItemDivingAmulet extends BaubleliciousBaublesItem {
         super();
         this.setMaxStackSize(1);
         this.setUnlocalizedName("ItemDivingAmulet");
+        setRegistryName("ItemDivingAmulet");
     }
 
 

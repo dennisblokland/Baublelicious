@@ -1,0 +1,17 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " L ",
+        "L L",
+        " L "
+    ],
+    "key": {
+        "L": {
+            "item": "minecraft:Leather"
+        }
+    },
+    "result": {
+        "item": "baublelicious:ItemAmulet",
+        "data": 0
+    }
+}

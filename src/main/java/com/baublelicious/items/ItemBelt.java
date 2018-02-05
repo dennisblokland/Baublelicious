@@ -10,7 +10,7 @@ public class ItemBelt extends BaubleliciousBaublesItem{
 
     public ItemBelt() {
         setUnlocalizedName("ItemBelt");
-
+        setRegistryName("ItemBelt");
     }
 
     @Override

@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 public class ItemRing extends BaubleliciousBaublesItem {
     public ItemRing() {
         this.setUnlocalizedName("ItemRing");
-
+        setRegistryName("ItemRing");
     }
 
     @Override

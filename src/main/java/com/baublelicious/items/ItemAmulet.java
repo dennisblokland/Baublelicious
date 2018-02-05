@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 public class ItemAmulet extends BaubleliciousBaublesItem {
     public ItemAmulet() {
         setUnlocalizedName("ItemAmulet");
+        setRegistryName("ItemAmulet");
 
     }
 

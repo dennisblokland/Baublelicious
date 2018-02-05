@@ -2,15 +2,18 @@ package com.baublelicious.items;
 
 import com.baublelicious.Baublelicious;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraft.util.NonNullList;
 
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemMagicCore extends BaubleliciousBasicItem {
@@ -26,9 +29,10 @@ public class ItemMagicCore extends BaubleliciousBasicItem {
     }
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems(Item par1, CreativeTabs par2CreativeTab, NonNullList<ItemStack> par3NonNullList) {
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
+    {
         for (int counter = 0; counter <= 2; ++counter) {
-            par3NonNullList.add(new ItemStack(this, 1, counter));
+            items.add(new ItemStack(this, 1, counter));
         }
     }
 
@@ -42,10 +46,10 @@ public class ItemMagicCore extends BaubleliciousBasicItem {
         return damage;
     }
 
-
+    @SideOnly(Side.CLIENT)
     @Override
-    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-        par3List.add(en_USNames[par1ItemStack.getItemDamage()].replaceAll("tier", "Tier "));
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        tooltip.add(en_USNames[stack.getItemDamage()].replaceAll("tier", "Tier "));
     }
-
 }

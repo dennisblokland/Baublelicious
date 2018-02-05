@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 public class ItemRingOfFlight extends BaubleliciousBaublesItem {
     public ItemRingOfFlight() {
         this.setUnlocalizedName("ItemRingOfFlight");
-
+            setRegistryName("ItemRingOfFlight");
     }
 
     @Override
