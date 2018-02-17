@@ -20,6 +20,17 @@ compileJava {
     sourceCompatibility = targetCompatibility = "1.8"
 }
 
+repositories {
+    mavenCentral()
+    maven {
+        name = "thiakil"
+        url = "http://maven.thiakil.com"
+    }
+    maven {
+        url "http://dvs1.progwml6.com/files/maven"
+    }
+}
+
 minecraft {
     version = "1.12.2-14.23.2.2611"
     runDir = "run"
@@ -52,7 +63,7 @@ dependencies {
     // except that these dependencies get remapped to your current MCP mappings
     //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
     //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
+	deobfCompile "com.azanor.baubles:Baubles:1.12-1.5.2"
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
