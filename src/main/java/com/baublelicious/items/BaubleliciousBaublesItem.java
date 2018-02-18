@@ -32,6 +32,7 @@ public class BaubleliciousBaublesItem extends Item implements IBauble
         super();
         setMaxStackSize(1);
         setCreativeTab(Baublelicious.BaubleliciousTab);
+
     }
 
 
@@ -93,6 +94,11 @@ public class BaubleliciousBaublesItem extends Item implements IBauble
 
     public void registerItemModel(Item item) {
         Baublelicious.proxy.registerItemRenderer(item, 0, name);
+    }
+    @Override
+    public boolean isEnchantable(ItemStack stack)
+    {
+        return false;
     }
 
 }

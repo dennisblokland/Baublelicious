@@ -1,0 +1,27 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " A ",
+        "BCB",
+        " S "
+    ],
+    "key": {
+        "C": {
+            "item": "Baublelicious:ItemBelt"
+        },
+        "B": {
+            "item": "minecraft:water_bucket"
+        },
+        "A": {
+            "item": "minecraft:diamond"
+        },
+        "S": {
+            "item": "baublelicious:item.ItemMagicCore",
+            "data": 1
+        }
+    },
+    "result": {
+        "item": "baublelicious:ItemBeltWaterWalking",
+        "data": 0
+    }
+}

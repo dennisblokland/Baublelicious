@@ -1,0 +1,28 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " A ",
+        "BCB",
+        " S "
+    ],
+    "key": {
+        "C": {
+            "item": "Baublelicious:ItemRing"
+        },
+        "B": {
+            "item": "minecraft:feather"
+        },
+        "A": {
+            "item": "minecraft:diamond"
+        },
+        "S": {
+            "item": "baublelicious:item.ItemMagicCore",
+            "data": 2
+        }
+    },
+    "result": {
+        "item": "baublelicious:ItemRingOfFlight",
+        "data": 0
+    }
+}
+

@@ -1,0 +1,29 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " A ",
+        "BCB",
+        " S "
+    ],
+    "key": {
+        "A": {
+            "item": "Baublelicious:ItemAmulet"
+        },
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "treeSapling"
+        },
+        "B": {
+            "item": "minecraft:dye",
+            "data": 15
+        },
+        "C": {
+            "item": "baublelicious:item.ItemMagicCore",
+            "data": 2
+        }
+    },
+    "result": {
+        "item": "baublelicious:ItemGrowthPendant",
+        "data": 0
+    }
+}

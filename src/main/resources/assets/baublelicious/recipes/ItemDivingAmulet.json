@@ -1,0 +1,27 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " B ",
+        "DAD",
+        " S "
+    ],
+    "key": {
+        "A": {
+            "item": "Baublelicious:ItemAmulet"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "B": {
+            "item": "minecraft:glass_bottle"
+        },
+        "S": {
+            "item": "baublelicious:item.ItemMagicCore",
+            "data": 1
+        }
+    },
+    "result": {
+        "item": "baublelicious:ItemDivingAmulet",
+        "data": 0
+    }
+}
