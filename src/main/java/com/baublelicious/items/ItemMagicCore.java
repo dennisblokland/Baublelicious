@@ -31,8 +31,10 @@ public class ItemMagicCore extends BaubleliciousBasicItem {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
-        for (int counter = 0; counter <= 2; ++counter) {
-            items.add(new ItemStack(this, 1, counter));
+        if(this.isInCreativeTab(tab)){
+            for (int counter = 0; counter <= 2; ++counter) {
+                items.add(new ItemStack(this, 1, counter));
+            }
         }
     }
 
