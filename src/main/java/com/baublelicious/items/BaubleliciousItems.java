@@ -42,6 +42,10 @@ public class BaubleliciousItems {
                 ItemAmuletFieryCore,
                 ItemMagicCore
         );
+
+
+    }
+    public static void registerModels() {
         ((BaubleliciousBaublesItem)ItemRing).registerItemModel(ItemRing);
         ((BaubleliciousBaublesItem)ItemAmulet).registerItemModel(ItemAmulet);
         ((BaubleliciousBaublesItem)ItemBelt).registerItemModel(ItemBelt);
@@ -55,9 +59,7 @@ public class BaubleliciousItems {
         ((BaubleliciousBaublesItem)ItemAmuletFieryCore).registerItemModel(ItemAmuletFieryCore);
         //basic items
         ((BaubleliciousBasicItem)ItemMagicCore).registerItemModel(ItemMagicCore);
-
     }
-
 
 
 

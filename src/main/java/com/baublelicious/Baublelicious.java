@@ -1,5 +1,7 @@
 package com.baublelicious;
 
+import com.baublelicious.blocks.BaubleliciousBlocks;
+import com.baublelicious.client.BaubleliciousGuiHandler;
 import com.baublelicious.client.ClientProxy;
 import com.baublelicious.items.BaubleliciousItems;
 
@@ -39,7 +41,7 @@ public class Baublelicious
     }
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new BaubleliciousGuiHandler());
         proxy.registerModels();
         BaubleliciousRecipe.init();
 
@@ -56,18 +58,18 @@ public class Baublelicious
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
             BaubleliciousItems.register(event.getRegistry());
-          //  Ba.registerItemBlocks(event.getRegistry());
+            BaubleliciousBlocks.registerItemBlocks(event.getRegistry());
         }
 
         @SubscribeEvent
         public static void registerBlocks(RegistryEvent.Register<Block> event) {
-         //   ModBlocks.register(event.getRegistry());
+            BaubleliciousBlocks.register(event.getRegistry());
         }
 
         @SubscribeEvent
         public static void registerModels(ModelRegistryEvent event) {
-           // BaubleliciousItems.registerModels();
-         //  ModBlocks.registerModels();
+            BaubleliciousItems.registerModels();
+            BaubleliciousBlocks.registerModels();
         }
 
     }
